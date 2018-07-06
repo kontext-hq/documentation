@@ -108,14 +108,19 @@ pages:
   - Overview: index.md
   - Android Quickstart: android-quickstart.md
   - iOS Quickstart: iOS-quickstart.md
-  - Troubleshooting: specimen.md
+  # - Troubleshooting: troubleshoot.md
+  - GDPR: gdpr.md
   - Security Overview: data-security.md
   - Android:
     - Quick Start: android/quickstart.md
     - SDK Reference: android/reference.md
+    - Generate Firebase Key: android/firebasekey.md
+    - Troubleshooting: android/troubleshoot.md
   - iOS:
     - Quick Start: iOS/quickstart.md
     - SDK Reference: iOS/reference.md
+    - Generate an iOS Push Cert: iOS/push-certificate.md
+    - Troubleshooting: iOS/troubleshoot.md
 
 # Google Analytics
 google_analytics:

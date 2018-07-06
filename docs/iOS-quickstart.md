@@ -2,25 +2,24 @@
 
 # iOS SDK Setup
 
-!!! info "Just starting with Android?"
-
-    Check out our Android SDK Setup guide.
-
 !!! tip "Upgrade to 2.5.1+"
 
      A number the methods and classes below were recently added in our 3.5.1 SDK. Make sure you have updated to this version.
 
+
+
 ### Required For Setup
 
-- [A Kontext Account](https://kontext.in/) if you do not already have one
+- [A Kontext Account](https://app.kontext.in/) if you do not already have one
 - Your Kontext App ID, available in [Keys & IDs](https://documentation.kontext.in/docs/accounts-and-keys#section-app-id)
-- An iOS Push Certificate. [Generate one here using our provisionator tool](https://documentation.kontext.in/docs/generate-an-ios-push-certificate).
+- An iOS Push Certificate. [Generate one here](/iOS/push-certificate).
 - An iOS device (iPhone, iPad, iPod Touch) to test on. The Xcode simulator doesn't support push notifications so you must test on a real device.
 - A Mac with a new version of Xcode
 
 ### 1. Add Notification Service Extension
 
 **1.1** In Xcode Select `File` > `New` > `Target...`
+
 **1.2** Select `Notification Service Extension` then press `Next`.
 
 ### IMAGE
@@ -222,7 +221,13 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-Note that `Kontext initWithLaunchOptions` must be called from your `didFinishLaunchingWithOptions`, as in the example above.
+!!! info "Note"
+
+    Kontext `initWithLaunchOptions` must be called from your `didFinishLaunchingWithOptions`, as in the example above.
+
+!!! Warning "Troubleshooting"
+
+    If run into any issues please see our [iOS troubleshooting guide](/iOS/troubleshoot).
 
 
 
@@ -242,34 +247,22 @@ Kontext.setEmail("example@domain.com");
 
 
 
-If you have a backend server, we strongly recommend using [Identity Verification](https://documentation.kontext.in/docs/identity-verification) with your users. Your backend can generate an **email authentication token** and send it to your app or website. The following code also includes callbacks:
-
-```swift tab="Swift"
-let emailAuthHash = //generated on your backend server
-let email = "example@domain.com";
-Kontext.setEmail(email, withEmailAuthHashToken: emailAuthHash, withSuccess: {
-    //The email has successfully been set.
-}) { (error) in
-    //Encountered an error while setting the email.
-};
-```
-
-
-
 ### 6. Add App Groups (Optional but Recommended)
 
 In order for your application to be able to let push notifications increment/decrement the badge count, you need to set up an **App Group** for your application.
 
 
 
-### Notification Features
-
-To configure notifications features, go to [Features Setup](https://documentation.kontext.in/docs/features-setup).
-
-
-
 ### Callbacks
 
-[KontextHandleNotificationReceivedBlock](https://documentation.kontext.in/docs/ios-native-sdk#section--oshandlenotificationreceivedblock-) - Called when a notification is received while your app is in focus only.
-[KontextHandleNotificationActionBlock](https://documentation.kontext.in/docs/ios-native-sdk#section--oshandlenotificationactionblock-) - This will be called when a notification is tapped on.
-See our [initWithLaunchOptions](https://documentation.kontext.in/docs/ios-native-sdk#section--initwithlaunchoptions-) documentation to add these.
+[KontextHandleNotificationReceivedBlock](/iOS/reference/#kontexthandlenotificationreceivedblock) - Called when a notification is received while your app is in focus only.
+[KontextHandleNotificationActionBlock](/iOS/reference/#kontexthandlenotificationactionblock) - This will be called when a notification is tapped on.
+See our [initWithLaunchOptions](/iOS/reference/#initwithlaunchoptions) documentation to add these.
+
+
+
+!!! success "You're Done!"
+
+    Next up: Send your first push notification via the [Kontext Dashboard](https://app.kontext.in)
+
+

@@ -1,56 +1,41 @@
 # Android SDK Setup
 
-!!! info "Just starting with Android?"
-    Check out our [Android SDK Setup](https://kontext.in) guide.
-
 !!! tip "Upgrade to 3.5.1+"
      A number the methods and classes below were recently added in our 3.5.1 SDK. Make sure you have updated to this version.
 
 ### Required For Setup
 
-- [A Kontext Account](https://kontext.in/), if you do not already have one
-- Your Kontext App ID, available in [Keys & IDs](https://documentation.kontext.in/docs/accounts-and-keys#section-app-id)
-- [A Google/Firebase Server API Key](https://documentation.kontext.in/docs/generate-a-google-server-api-key)
+- [A Kontext Account](https://app.kontext.in/), if you do not already have one
+- Your Kontext App ID, available in [Keys & IDs](/android/firebasekey)
+- [A Google/Firebase Server API Key](/android/firebase/key)
 - A device or emulator that has Google Play services installed and updated on it
 - Android Studio 2.3.3 or newer
 
 ### 1. Gradle Setup
 
-**1.1** Open your `app/build.gradle` (Module: app) file, add the following to the very top.
-
-- [build.gradle](https://documentation.kontext.in/docs/android-sdk-setup)
-
-```
-buildscript {
-    repositories {
-        maven { url 'https://plugins.gradle.org/m2/'}
-    }
-    dependencies {
-        classpath 'gradle.plugin.com.kontext:kontext-gradle-plugin:[0.11.0, 0.99.99]'
-    }
-}
-apply plugin: 'com.kontext.androidsdk.kontext-gradle-plugin'
-
-repositories {
-    maven { url 'https://maven.google.com' }
-}
-```
+**1.1** Open your app *libs* folder and paste Kontext SDK folder in it.
 
 **1.2** Add the following to your `dependencies` section.
 
-- [build.gradle](https://documentation.kontext.in/docs/android-sdk-setup)
+- *build.gradle*
 
 ```
+
 dependencies {
-    implementation 'com.kontext:Kontext:[3.9.1, 3.99.99]'
+    implementation(name:'kontextSdk', ext:'aar')
+    implementation 'com.google.android.gms:play-services-nearby:12.0.1'
 }
 ```
+
+!!! warning "Play Services Version"
+
+    In order to get access to all Kontext SDK features update all your app play services version to 12.0.1 or above.
 
 **1.3** Add the following in your `android` > `defaultConfig` section.
 
 - Update `PUT YOUR KONTEXT APP ID HERE` with your Kontext app id
 
-- [build.gradle](https://documentation.kontext.in/docs/android-sdk-setup)
+- *build.gradle*
 
 ```
 android {
@@ -63,11 +48,21 @@ android {
     }
  }
 ```
+**1.4** Add the following in your `App Manifest application` tag to enable Kontext In-App messaging.
+
+```
+<application>
+	<activity
+	android:name="com.kontext.InAppMessageActivity"
+	android:configChanges="orientation|keyboardHidden"
+	android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+</application>
+       
+```
+
 ### Sync Gradle
 
 Make sure to press "Sync Now" on the banner that pops up after saving!
-
-
 
 ### 2. Add Required Code
 
@@ -96,40 +91,66 @@ public class YourAppClass extends Application {
 
 ### 3. Create a custom default notification icon
 
-**3.1** By default, notifications will be shown with a bell icon in the notification shade. Follow the [Customize Notification Icons](https://documentation.kontext.in/docs/customize-notification-icons) guide to create a your own small notification icon for your app.
+**3.1** By default, notifications will be shown with a bell icon in the notification shade. 
 
-### 4. Add Email
+!!! warning "Troubleshooting"
+
+    If run into any issues please see our [Android troubleshooting guide](/android/troubleshoot), or our general Troubleshooting section.
+
+### 4. Add Information to a User Profile
 
 RECOMMENDED
 
-Next, if you collect emails from users, you can set a user's email with the `setEmail` method. This enables [Kontext Email Messaging](https://documentation.kontext.in/docs/email-overview), which allows you to send emails in addition to push.
+A User Profile is automatically created in Kontext for each user launching your application.
+
+Initially, the User Profile starts out as anonymous, which means the profile does not contain any identifiable information about the user. You can enrich the profile with pre-defined attributes from the Kontext data model, such as name and email. You can also add custom attributes that you define to extend the Kontext data model.
+
+Sending user profile information to Kontext using our Android SDK requires two steps. First, you have to build a JSON Object with the profile properties. Second, you have to call the SDK's [sendUserAttributes](/android/reference#senduserattributes)) method and pass the object you created as a parameter.
 
 ```java
-Kontext.setEmail("example@domain.com");
+JSONObject userProfile = new JSONObject();
+      try {
+         userProfile.put("Name", "Jhon Doe");
+         userProfile.put("Email", "jack@gmail.com");
+         userProfile.put("Phone", "+14155551234");
+         userProfile.put("Gender", "M");
+         userProfile.put("Employed", "Y");
+         userProfile.put("Education", "Graduate");
+         userProfile.put("Married","Y");
+         userProfile.put("Age", 50);
+         userProfile.put("Tz", "Asia/Kolkata");
+         Kontext.setUserAttributes(userProfile);
+      } catch (JSONException e) {
+         e.printStackTrace();
+      }
 ```
 
-If you have a backend server, we strongly recommend using [Identity Verification](https://documentation.kontext.in/docs/identity-verification) with your users. Your backend can generate an **email authentication token** and send it to your app or website. The following code also includes callbacks:
+### 5. Track Screen Activity
+
+RECOMMENDED
+
+Once you integrate the Kontext SDK, we automatically start tracking events, such as App Launch and Notification Viewed. Kontext SDK offers screen tracking API to track screen activity of a user.
+
+To send screen activity to Kontext, you will have to call the [sendScreen](/android/reference#sendScreen) method with the name of the screen.
 
 ```java
-String email = "example@domain.com";
-String emailAuthHash = "..."; // Email auth hash generated from your server
-Kontext.setEmail(email, emailAuthHash, new Kontext.EmailUpdateHandler() {
-  @Override
-  public void onSuccess() {
-    // Email successfully synced with Kontext
-  }
-
-  @Override
-  public void onFailure(Kontext.EmailUpdateError error) {
-    // Error syncing email, check error.getType() and error.getMessage() for details
-  }
-});
+Kontext.sendScreen("Screen Name");
 ```
 
-Additional email methods are available in the [Android Native SDK](https://documentation.kontext.in/docs/android-native-sdk#section-email)
+### 5. Track Custom Events
 
-### You're Done!
+RECOMMENDED
 
-Next up: [Send your first push notification](https://documentation.kontext.in/docs/testing-mobile-push-notifications) via the Kontext Dashboard
+Once you integrate the Kontext SDK, we automatically start tracking events, such as App Launch and Notification Viewed. In addition, you can also track custom events.
 
- 
+To send screen activity to Kontext, you will have to call the [sendEvent](/android/reference#sendEvent) method with the name of the custom event you want to track.
+
+```java
+Kontext.sendEvent("Product Added", "Applie iPhone");
+```
+
+
+
+!!! success "You're Done!"
+
+    Next up: Send your first push notification via the [Kontext Dashboard](https://app.kontext.in)

@@ -3,7 +3,7 @@ Android Native SDK
 Kontext ANDROID Native API Reference
 
 !!! info "Just starting with Android?"
-    Check out our [Android SDK Setup](https://kontext.in) guide.
+    Check out our [Android SDK Setup](/android/quickstart) guide.
 
 !!! tip "Upgrade to 3.5.1+"
      A number the methods and classes below were recently added in our 3.5.1 SDK. Make sure you have updated to this version.
@@ -13,62 +13,57 @@ Kontext ANDROID Native API Reference
 | Calls                                                        | Type              | Description                                                  |
 | ------------------------------------------------------------ | ----------------- | ------------------------------------------------------------ |
 | Initialization                                               |                   |                                                              |
-| [init](https://documentation.kontext.in/docs#section--init-) | Builder Method    | Initialize Kontext                                           |
-| [startInit](https://documentation.kontext.in/docs#section--startinit-) | Builder Method    |                                                              |
-| [setNotificationReceivedHandler](https://documentation.kontext.in/docs#section--setnotificationreceivedhandler-) | Builder Method    |                                                              |
-| [setNotificationOpenedHandler](https://documentation.kontext.in/docs#section--setnotificationopenedhandler-) | Builder Method    |                                                              |
-| [autoPromptLocation](https://documentation.kontext.in/docs#section--autopromptlocation-) | Builder Method    | Automatically Prompt Users for Location                      |
-| [disableGmsMissingPrompt](https://documentation.kontext.in/docs#section--disablegmsmissingprompt-) | Builder Method    | Automatically Prompt User to update Google Play if out of date |
-| [unsubscribeWhenNotificationsAreDisabled](https://documentation.kontext.in/docs#section--unsubscribewhennotificationsaredisabled-) | Builder Method    | If notifications are disabled for your app unsubscribe them from Kontext. |
-| [filterOtherGCMReceivers](https://documentation.kontext.in/docs#section--filterothergcmreceivers-) | Builder Method    | Enable to prevent other broadcast receivers from receiving Kontext FCM / GCM payloads. |
-| [setInFocusDisplaying](https://documentation.kontext.in/docs#section--setinfocusdisplaying-) | Method            | Change how the notification is displayed when your app is actively being used. |
-|                                                              |                   |                                                              |
+| [init](#init)                                                | Builder Method    | Initialize Kontext                                           |
+| [startInit](#startinit)                                      | Builder Method    |                                                              |
+| [setNotificationReceivedHandler](#setnotificationreceivedhandler) | Builder Method    |                                                              |
+| [setNotificationOpenedHandler](#setnotificationopenedhandler) | Builder Method    |                                                              |
+| [autoPromptLocation](#autopromptlocation)                    | Builder Method    | Automatically Prompt Users for Location                      |
+| [disableGmsMissingPrompt](#disablegmsmissingprompt)          | Builder Method    | Automatically Prompt User to update Google Play if out of date |
+| [unsubscribeWhenNotificationsAreDisabled](#unsubscribewhennotificationsaredisabled) | Builder Method    | If notifications are disabled for your app unsubscribe them from Kontext. |
+| [filterOtherGCMReceivers](#filterothergcmreceivers)          | Builder Method    | Enable to prevent other broadcast receivers from receiving Kontext FCM / GCM payloads. |
+| [setInFocusDisplaying](#setinfocusdisplaying)                | Method            | Change how the notification is displayed when your app is actively being used. |
 | Privacy                                                      |                   |                                                              |
-| [setRequiresUserPrivacyConsent](https://documentation.kontext.in/docs#section--setrequiresuserprivacyconsent-) | Method            | Delays initialization of the SDK until the user provides privacy consent |
-| [provideUserConsent](https://documentation.kontext.in/docs#section--provideuserconsent-) | Method            | Tells the SDK that the user has provided privacy consent (if required) |
-| [userProvidedPrivacyConsent](https://documentation.kontext.in/docs#section--userprovidedprivacyconsent-) | Method            | Returns a boolean indicating if the SDK is waiting for user privacy consent |
-|                                                              |                   |                                                              |
+| [setRequiresUserPrivacyConsent](#setrequiresuserprivacyconsent) | Method            | Delays initialization of the SDK until the user provides privacy consent |
+| [provideUserConsent](#provideuserconsent)                    | Method            | Tells the SDK that the user has provided privacy consent (if required) |
+| [userProvidedPrivacyConsent](#userprovidedprivacyconsent)    | Method            | Returns a boolean indicating if the SDK is waiting for user privacy consent |
+| Stauts                                                       |                   |                                                              |
+| [getPermissionSubscriptionState](#getpermissionsubscriptionstate) | Method            | Current Permission and Subscription status                   |
+| [addPermissionObserver](#addpermissionobserver)              | Method            | Permission status changes                                    |
+| [addSubscriptionObserver](#addsubscriptionobserver)          | Method            | Subscription status changes                                  |
 | Events                                                       |                   |                                                              |
-| [sendEvent](https://documentation.kontext.in/docs#section--sendtag-) | Method            | Send a single user event to Kontext                          |
-| [sendEvents](https://documentation.kontext.in/docs#section--sendtags-) | Method            | Batch and send multiple events to Kontext                    |
-| [sendScreen](https://documentation.kontext.in/docs#section--sendtags-) | Method            | Send screen view activity to Kontext                         |
-| [sendUserAttributes](https://documentation.kontext.in/docs#section--sendtags-) | Method            | Send user properties to Kontext                              |
-|                                                              |                   |                                                              |
+| [sendEvent](#sendevent)                                      | Method            | Send a single user event to Kontext                          |
+| [sendEvents](#sendevents)                                    | Method            | Batch and send multiple events to Kontext                    |
+| [sendScreen](#sendscreen)                                    | Method            | Send screen view activity to Kontext                         |
+| [sendUserAttributes](#senduserattributes)                    | Method            | Send user properties to Kontext                              |
 | Data                                                         |                   |                                                              |
-| [promptLocation](https://documentation.kontext.in/docs#section--promptlocation-) | Method            | Prompt Users for Location                                    |
-| [setLocationShared](https://documentation.kontext.in/docs#section--setlocationshared-) | Method            | Disable or enable location collection (Defaults to enabled) if your app has location permission |
-|                                                              |                   |                                                              |
+| [promptLocation](#promptlocation)                            | Method            | Prompt Users for Location                                    |
+| [setLocationShared](#setlocationshared)                      | Method            | Disable or enable location collection (Defaults to enabled) if your app has location permission |
 | Receiving Notifications                                      |                   |                                                              |
-| [postNotification](https://documentation.kontext.in/docs#section--postnotification-) | Method            | Send or schedule a notification to a user                    |
-| [cancelNotification](https://documentation.kontext.in/docs#section--cancelnotification-) | Method            | Delete a single app notification                             |
-| [clearKontextNotifications](https://documentation.kontext.in/docs#section--clearkontextnotifications-) | Method            | Delete all app notifications                                 |
-| [setSubscription](https://documentation.kontext.in/docs#section--setsubscription-) | Method            | Opt users in or out of receiving notifications               |
-| [NotificationExtenderService](https://documentation.kontext.in/docs#section--notificationextenderservice-) | Method + Manifest | Add custom data to a notification, or override notification options |
-|                                                              |                   |                                                              |
+| [postNotification](#postnotification)                        | Method            | Send or schedule a notification to a user                    |
+| [cancelNotification](#cancelnotification)                    | Method            | Delete a single app notification                             |
+| [clearKontextNotifications](#clearkontextnotifications)      | Method            | Delete all app notifications                                 |
+| [setSubscription](#setsubscription)                          | Method            | Opt users in or out of receiving notifications               |
+| [NotificationExtenderService](#notificationextenderservice)  | Method + Manifest | Add custom data to a notification, or override notification options |
 | Email                                                        |                   |                                                              |
-| [setEmail](https://documentation.kontext.in/docs#section--setemail-) | Method            | Set user's email                                             |
-| [logoutEmail](https://documentation.kontext.in/docs#section--logoutemail-) | Method            | Log user out to dissociate email from device                 |
-| [addEmailSubscriptionObserver](https://documentation.kontext.in/docs#section--addemailsubscriptionobserver-) | Method            | Observer for subscription changes to email                   |
-|                                                              |                   |                                                              |
+| [setEmail](#setemail)                                        | Method            | Set user's email                                             |
+| [logoutEmail](#logoutemail)                                  | Method            | Log user out to dissociate email from device                 |
+| [addEmailSubscriptionObserver](#addemailsubscriptionobserver) | Method            | Observer for subscription changes to email                   |
 | Notification Events                                          |                   |                                                              |
-| [NotificationReceivedHandler](https://documentation.kontext.in/docs#section--notificationreceivedhandler-) | Handler           | When a notification is received by a device                  |
-| [NotificationOpenedHandler](https://documentation.kontext.in/docs#section--notificationopenedhandler-) | Handler           | When a user takes an action on a notification                |
-| [Opened Action](https://documentation.kontext.in/docs#section-opened-action) | Android Manifes   | Disable resuming launcher activity when notification is opened |
-|                                                              |                   |                                                              |
+| [NotificationReceivedHandler](#notificationreceivedhandler)  | Handler           | When a notification is received by a device                  |
+| [NotificationOpenedHandler](#notificationopenedhandler)      | Handler           | When a user takes an action on a notification                |
+| [Opened Action](#opened-action)                              | Android Manifes   | Disable resuming launcher activity when notification is opened |
 | Objects                                                      |                   |                                                              |
-| [OSNotificationOpenResult](https://documentation.kontext.in/docs#section--osnotificationopenresult-) | Object            | Information returned from a notification the user received   |
-| [OSNotification](https://documentation.kontext.in/docs#section--osnotification-) | Object            | Notification the user received                               |
-| [OSNotificationAction](https://documentation.kontext.in/docs#section--osnotificationaction-) |                   | Action the user took on the notification                     |
-| [OSNotificationPayload](https://documentation.kontext.in/docs#section--osnotificationpayload-) |                   | Contents and settings of the notification the user received  |
-|                                                              |                   |                                                              |
+| [OSNotificationOpenResult](#osnotificationopenresult)        | Object            | Information returned from a notification the user received   |
+| [OSNotification](#osnotification)                            | Object            | Notification the user received                               |
+| [OSNotificationAction](#osnotificationaction)                |                   | Action the user took on the notification                     |
+| [OSNotificationPayload](#osnotificationpayload)              |                   | Contents and settings of the notification the user received  |
 | Appearance                                                   |                   |                                                              |
-| [setInFocusDisplaying](https://documentation.kontext.in/docs#section--setinfocusdisplaying-) | Method            | Change how the notification is displayed when your app is actively being used. |
-| [enableVibrate](https://documentation.kontext.in/docs#section--enablevibrate-) | Method            | When user receives notification, vibrate device less         |
-| [enableSound](https://documentation.kontext.in/docs#section--enablesound-) | Method            | When user receives notification, do not play a sound         |
-| [Disable Badges](https://documentation.kontext.in/docs#section-disable-badges) | Android Manifest  | Disable badge counts in your app                             |
-|                                                              |                   |                                                              |
+| [setInFocusDisplaying](#setinfocusdisplaying)                | Method            | Change how the notification is displayed when your app is actively being used. |
+| [enableVibrate](#enablevibrate)                              | Method            | When user receives notification, vibrate device less         |
+| [enableSound](#enablesound)                                  | Method            | When user receives notification, do not play a sound         |
+| [Disable Badges](#disable-badges)                            | Android Manifest  | Disable badge counts in your app                             |
 | Debug                                                        |                   |                                                              |
-| [setLogLevel](https://documentation.kontext.in/docs#section--setloglevel-) | Method            | Enable logging to help debug Kontext implementation          |
+| [setLogLevel](#setloglevel)                                  | Method            | Enable logging to help debug Kontext implementation          |
 
 
 
@@ -96,7 +91,7 @@ Initializes Kontext to register the device for push notifications. Should be cal
 | --------- | ------- | ------------------------- |
 | `context` | Context | Your Application Kontext. |
 
-#### Returns
+*Returns*
 
 `Kontext.Builder` - See below for a list of methods available.
 
@@ -116,7 +111,7 @@ public class YourAppClass extends Application {
 
 BUILDER METHOD
 
-Prompts the user for location permissions. This allows for geotagging so you can send notifications to users based on location. See [promptLocation](https://documentation.kontext.in/docs#section--promptlocation-) for more details.
+Prompts the user for location permissions. This allows for geotagging so you can send notifications to users based on location. See [promptLocation](#promptlocation) for more details.
 
 | Parameter | Type    | Description                                                  |
 | --------- | ------- | ------------------------------------------------------------ |
@@ -136,9 +131,9 @@ BUILDER METHOD
 
 Sets a notification received handler that will fire when a notification is received. It will be fired when your app is in focus or in the background.
 
-| Parameter | Type                                                         | Description                                         |
-| --------- | ------------------------------------------------------------ | --------------------------------------------------- |
-| `handler` | [NotificationReceivedHandler](https://documentation.kontext.in/docs#section--notificationreceivedhandler-) | Instance to a class implementing this interference. |
+| Parameter | Type                                                        | Description                                         |
+| --------- | ----------------------------------------------------------- | --------------------------------------------------- |
+| `handler` | [NotificationReceivedHandler](#notificationreceivedhandler) | Instance to a class implementing this interference. |
 
 ```Java
 Kontext.startInit(this)   
@@ -154,9 +149,9 @@ BUILDER METHOD
 
 Sets a notification opened handler. The instance will be called when a notification is tapped on from the notification shade or when closing an Alert notification shown in the app.
 
-| Parameter | Type                                                         | Description                                         |
-| --------- | ------------------------------------------------------------ | --------------------------------------------------- |
-| `hndler`  | [NotificationOpenedHandler](https://documentation.kontext.in/docs#section--notificationopenedhandler-) | Instance to a class implementing this interference. |
+| Parameter | Type                                                    | Description                                         |
+| --------- | ------------------------------------------------------- | --------------------------------------------------- |
+| `hndler`  | [NotificationOpenedHandler](#notificationopenedhandler) | Instance to a class implementing this interference. |
 
 ```Java
 Kontext.startInit(this)   
@@ -181,6 +176,8 @@ Kontext.setInFocusDisplaying(Kontext.OSInFocusDisplayOption.Notification);
 ```
 
 
+
+## Privacy
 
 ### `setRequiresUserPrivacyConsent`
 
@@ -282,9 +279,9 @@ The following methods provide details on the permission and subscribed state of 
 
 ### Status Recommendations
 
-[getPermissionSubscriptionState](https://documentation.kontext.in/docs#section--getpermissionsubscriptionstate-) - Use to load your UI to the correct state. Such as showing a toggle button to enable notifications.
+[getPermissionSubscriptionState](#getpermissionsubscriptionstate) - Use to load your UI to the correct state. Such as showing a toggle button to enable notifications.
 
-[addSubscriptionObserver](https://documentation.kontext.in/docs#section--addsubscriptionobserver-) - Use to update your server when the user becomes subscribed or unsubscribed and to get the Kontext player / user id.
+[addSubscriptionObserver](#addsubscriptionobserver) - Use to update your server when the user becomes subscribed or unsubscribed and to get the Kontext player / user id.
 Example if you need to store the Kontext player / user id on your backend you can make a REST API call directly from the observer's callback. The Kontext observer ONLY fires when there is a change, including NOT firing even if the app has been restarted. This helps ensure your not making unnecessary network calls to your backend on each app restart if nothing changed.
 
 
@@ -295,10 +292,10 @@ METHOD
 
 Get the current notification and permission state. Returns a `OSPermissionSubscriptionState` type described below.
 
-| Parameter                  | Type                                                         | Description                            |
-| -------------------------- | ------------------------------------------------------------ | -------------------------------------- |
-| ` getPermissionStatus()`   | [OSPermissionState](https://documentation.kontext.in/docs#section--ospermissionstate-) | Android Notification Permissions state |
-| ` getSubscriptionStatus()` | [OSSubscriptionState](https://documentation.kontext.in/docs#section--ossubscriptionstate-) | Google and  Kontext subscription state |
+| Parameter                  | Type                                        | Description                            |
+| -------------------------- | ------------------------------------------- | -------------------------------------- |
+| ` getPermissionStatus()`   | [OSPermissionState](#ospermissionstate)     | Android Notification Permissions state |
+| ` getSubscriptionStatus()` | [OSSubscriptionState](#ossubscriptionstate) | Google and  Kontext subscription state |
 
 ```Java
 OSPermissionSubscriptionState status = Kontext.getPermissionSubscriptionState();
@@ -380,10 +377,10 @@ CLASS
 
 Instance is given to your `onOSPermissionChanged` method which provides what the value was (**"from"**) and what the value is now (**"to"**).
 
-| Parameter   | Type                                                         | Description           |
-| ----------- | ------------------------------------------------------------ | --------------------- |
-| `getFrom()` | [OSSubscriptionState](https://documentation.kontext.in/docs#section--ossubscriptionstate-) | What the state was    |
-| `getTo()`   | [OSSubscriptionState](https://documentation.kontext.in/docs#section--ossubscriptionstate-) | What the state is now |
+| Parameter   | Type                                        | Description           |
+| ----------- | ------------------------------------------- | --------------------- |
+| `getFrom()` | [OSSubscriptionState](#ossubscriptionstate) | What the state was    |
+| `getTo()`   | [OSSubscriptionState](#ossubscriptionstate) | What the state is now |
 
 
 
@@ -441,10 +438,10 @@ CLASS
 
 Instance is given to your `onOSSubscriptionChanged` method which provides what the value was (**"from"**) and what the value is now (**"to"**).
 
-| Parameter | Type                                                         | Description               |
-| --------- | ------------------------------------------------------------ | ------------------------- |
-| getFrom() | [OSPermissionState](https://documentation.kontext.in/docs#section--ospermissionstate-) | What the state was (past) |
-| getTo()   | [OSPermissionState](https://documentation.kontext.in/docs#section--ospermissionstate-) | What the state is now     |
+| Parameter | Type                                    | Description               |
+| --------- | --------------------------------------- | ------------------------- |
+| getFrom() | [OSPermissionState](#ospermissionstate) | What the state was (past) |
+| getTo()   | [OSPermissionState](#ospermissionstate) | What the state is now     |
 
 
 
@@ -454,7 +451,7 @@ Instance is given to your `onOSSubscriptionChanged` method which provides what t
 
 METHOD
 
-Tag a user based on an app event of your choosing so later you can create segments in [Segments](https://documentation.kontext.in/segmentation) to target these users. Use `sendTags` if you need to set more than one tag on a user at a time.
+Tag a user based on an app event of your choosing so later you can create segments in *Segments* to target these users. Use `sendTags` if you need to set more than one tag on a user at a time.
 
 | Parameter | Type   | Description                               |
 | --------- | ------ | ----------------------------------------- |
@@ -471,7 +468,7 @@ Kontext.sendEvents("key", "value");
 
 METHOD
 
-Tag a user based on an app event of your choosing so later you can create segments in [Segments](https://documentation.kontext.in/segmentation) to target these users.
+Tag a user based on an app event of your choosing so later you can create segments in *Segments* to target these users.
 
 | Parameter   | Type       | Description                                           |
 | ----------- | ---------- | ----------------------------------------------------- |
@@ -490,7 +487,7 @@ JSONObject events = new JSONObject();
 
 METHOD
 
-Tag a user based on an screen view event of your choosing so later you can create segments in [Segments](https://documentation.kontext.in/segmentation) to target these users.
+Tag a user based on an screen view event of your choosing so later you can create segments in *Segments* to target these users.
 
 | Parameter   | Type       | Description                                           |
 | ----------- | ---------- | ----------------------------------------------------- |
@@ -556,7 +553,7 @@ Disable or enable location collection (defaults to enabled if your app has locat
 
 
 
-## Sending Notifications
+## Notifications
 
 ### `postNotification`
 
@@ -615,7 +612,7 @@ Kontext.setSubscription(false);
 
 METHOD
 
-Kontext supports sending additional data along with a notification as key value pairs. You can read this additional data when a notification is opened by adding a [NotificationOpenedHandler](https://documentation.kontext.in/docs#section--notificationopenedhandler-) instead.
+Kontext supports sending additional data along with a notification as key value pairs. You can read this additional data when a notification is opened by adding a [NotificationOpenedHandler](#notificationopenedhandler) instead.
 
 However if you want to do one of the following continue with the instructions below.
 
@@ -700,26 +697,6 @@ METHOD
 Kontext.setEmail("example@domain.com");
 ```
 
-If you have a backend server, we strongly recommend using [Identity Verification](https://documentation.kontext.in/docs/identity-verification) with your users. Your backend can generate an **email authentication token** and send it to your app. The following code also includes callbacks:
-
-```Java
-String email = "example@domain.com";
-String emailAuthHash = "..."; // Email auth hash generated from your server
-Kontext.setEmail(email, emailAuthHash, new Kontext.EmailUpdateHandler() {
-  @Override
-  public void onSuccess() {
-    // Email successfully synced with Kontext
-  }
-
-  @Override
-  public void onFailure(Kontext.EmailUpdateError error) {
-    // Error syncing email, check error.getType() and error.getMessage() for details
-  }
-});
-```
-
-
-
 ### `logoutEmail`
 
 METHOD
@@ -762,9 +739,9 @@ HANDLER
 
 Fires when a notification is received. It will be fired when your app is in focus or in the background.
 
-| Parameter      | Type                                                         | Description                                                  |
-| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `notification` | [OSNotification](https://documentation.kontext.in/docs#section--osnotification-) | Contains user's response and properties of the notification. |
+| Parameter      | Type                              | Description                                                  |
+| -------------- | --------------------------------- | ------------------------------------------------------------ |
+| `notification` | [OSNotification](#osnotification) | Contains user's response and properties of the notification. |
 
 ```Java
 class ExampleNotificationReceivedHandler implements Kontext.NotificationReceivedHandler {
@@ -793,9 +770,9 @@ HANDLER
 
 Use to process a Kontext notification the user just tapped on.
 
-| Parameter | Type                                                         | Description                                                  |
-| --------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `result`  | [OSNotificationOpenResult](https://documentation.kontext.in/docs#section--osnotificationopenresult-) | Contains user's response and properties of the notification. |
+| Parameter | Type                                                  | Description                                                  |
+| --------- | ----------------------------------------------------- | ------------------------------------------------------------ |
+| `result`  | [OSNotificationOpenResult](#osnotificationopenresult) | Contains user's response and properties of the notification. |
 
 ```Java
 class ExampleNotificationOpenedHandler implements Kontext.NotificationOpenedHandler {
@@ -840,10 +817,10 @@ CLASS
 
 The information returned from a notification the user received.
 
-| Parameter      | Type                                                         | Description                                   |
-| -------------- | ------------------------------------------------------------ | --------------------------------------------- |
-| `notification` | [OSNotification](https://documentation.kontext.in/docs#section--osnotification-) | Notification the user received.               |
-| `action`       | [OSNotificationAction](https://documentation.kontext.in/docs#section--osnotificationaction-) | The action the user took on the notification. |
+| Parameter      | Type                                          | Description                                   |
+| -------------- | --------------------------------------------- | --------------------------------------------- |
+| `notification` | [OSNotification](#osnotification)             | Notification the user received.               |
+| `action`       | [OSNotificationAction](#osnotificationaction) | The action the user took on the notification. |
 
 
 
@@ -853,24 +830,24 @@ CLASS
 
 The notification the user received.
 
-| Parameter               | Type                                                         | Description                                                  |
-| ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `isAppInFocus`          | boolean                                                      | Was app in focus.                                            |
-| `shown`                 | boolean                                                      | Was notification shown to the user. Will be false for silent notifications. |
-| `androidNotificationId` | int                                                          | Android Notification assigned to the notification. Can be used to cancel or replace the notification. |
-| `payload`               | [OSNotificationPayload](https://documentation.kontext.in/docs#section--osnotificationpayload-) | Payload received from Kontext.                               |
-| `displayType`           | [DisplayType](https://documentation.kontext.in/docs#section--displaytype-) | How the notification was displayed to the user. Can be set to `Notification`, `InAppAlert`, or `None` if it was not displayed. |
-| ` groupedNotifications` | List<OSNotificationPayloaod>                                 | Notification is a summary notification for a group this will contain all notification payloads it was created from. |
+| Parameter               | Type                                            | Description                                                  |
+| ----------------------- | ----------------------------------------------- | ------------------------------------------------------------ |
+| `isAppInFocus`          | boolean                                         | Was app in focus.                                            |
+| `shown`                 | boolean                                         | Was notification shown to the user. Will be false for silent notifications. |
+| `androidNotificationId` | int                                             | Android Notification assigned to the notification. Can be used to cancel or replace the notification. |
+| `payload`               | [OSNotificationPayload](#osnotificationpayload) | Payload received from Kontext.                               |
+| `displayType`           | [DisplayType](#displaytype)                     | How the notification was displayed to the user. Can be set to `Notification`, `InAppAlert`, or `None` if it was not displayed. |
+| ` groupedNotifications` | List<OSNotificationPayloaod>                    | Notification is a summary notification for a group this will contain all notification payloads it was created from. |
 
 
 
 #### `DisplayType`
 
-How the notification was displayed to the user. Part of [OSNotification](https://documentation.kontext.in/docs#section--osnotification-). See [inFocusDisplaying](https://documentation.kontext.in/docs#section--infocusdisplaying-) for more information on how this is used. 
+How the notification was displayed to the user. Part of [OSNotification](#osnotification). See [inFocusDisplaying](#infocusdisplaying) for more information on how this is used. 
 
 `Notification` - native notification display.
 `InAppAlert` (DEFAULT) - native alert dialog display.
-`None` - notification is silent, or [inFocusDisplaying](https://documentation.kontext.in/docs#section--infocusdisplaying-) is disabled.
+`None` - notification is silent, or [inFocusDisplaying](#infocusdisplaying) is disabled.
 
 
 
@@ -893,26 +870,26 @@ CLASS
 
 Contents and settings of the notification the user received.
 
-| Parameter                | Type                                                         | Description                                                  |
-| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ` notificationID`        | String                                                       | Kontext notification UUID.                                   |
-| `title`                  | String                                                       | Title of the notification.                                   |
-| `body`                   | String                                                       | Body of the notification.                                    |
-| ` additionalData`        | JSONObject                                                   | Custom additional data that was sent with the notification.  |
-| `smallIcon`              | String                                                       | Small icon resource name set on the notification.            |
-| `largeIcon`              | String                                                       | Large icon set on the notification.                          |
-| `bigPicture`             | String                                                       | Big picture image set on the notification.                   |
-| ` smallIconAccentColor`  | String                                                       | Accent color shown around small notification icon on Android 5+ devices. ARGB format. |
-| `launchUrl`              | String                                                       | URL to open when opening the notification.                   |
-| `sound`                  | String                                                       | Sound resource to play when the notification is shown.       |
-| `ledColor`               | String                                                       | Devices that have a notification LED will blink in this color. ARGB format |
-| ` lockScreenVisibility`  | int                                                          | Privacy setting for how the notification should be shown on the lockscreen of Android 5+ devices.<br /> `1` (DEFAULT) - Public (fully visible)<br /> `0` - Private (Contents are hidden)<br /> `-1` - Secret (not shown). |
-| ` groupKey`              | String                                                       | Notifications with this same key will be grouped together as a single summary notification. |
-| ` groupMessage`          | string                                                       | Summary text displayed in the summary notification.          |
-| `actionButtons`          | List<ActionButton>                                           | List of action buttons on the notification.                  |
-| ` fromProjectNumber`     | String                                                       | The Google project number the notification was sent under.   |
-| ` backgroundImageLayout` | [BackgroundImageLayout](https://documentation.kontext.in/docs#section--backgroundimagelayout-) | If a background image was set this object will be available. |
-| ` rawPayload`            | String                                                       | Raw JSON payload string received from  Kontext.              |
+| Parameter                | Type                                            | Description                                                  |
+| ------------------------ | ----------------------------------------------- | ------------------------------------------------------------ |
+| ` notificationID`        | String                                          | Kontext notification UUID.                                   |
+| `title`                  | String                                          | Title of the notification.                                   |
+| `body`                   | String                                          | Body of the notification.                                    |
+| ` additionalData`        | JSONObject                                      | Custom additional data that was sent with the notification.  |
+| `smallIcon`              | String                                          | Small icon resource name set on the notification.            |
+| `largeIcon`              | String                                          | Large icon set on the notification.                          |
+| `bigPicture`             | String                                          | Big picture image set on the notification.                   |
+| ` smallIconAccentColor`  | String                                          | Accent color shown around small notification icon on Android 5+ devices. ARGB format. |
+| `launchUrl`              | String                                          | URL to open when opening the notification.                   |
+| `sound`                  | String                                          | Sound resource to play when the notification is shown.       |
+| `ledColor`               | String                                          | Devices that have a notification LED will blink in this color. ARGB format |
+| ` lockScreenVisibility`  | int                                             | Privacy setting for how the notification should be shown on the lockscreen of Android 5+ devices.<br /> `1` (DEFAULT) - Public (fully visible)<br /> `0` - Private (Contents are hidden)<br /> `-1` - Secret (not shown). |
+| ` groupKey`              | String                                          | Notifications with this same key will be grouped together as a single summary notification. |
+| ` groupMessage`          | string                                          | Summary text displayed in the summary notification.          |
+| `actionButtons`          | List<ActionButton>                              | List of action buttons on the notification.                  |
+| ` fromProjectNumber`     | String                                          | The Google project number the notification was sent under.   |
+| ` backgroundImageLayout` | [BackgroundImageLayout](#backgroundimagelayout) | If a background image was set this object will be available. |
+| ` rawPayload`            | String                                          | Raw JSON payload string received from  Kontext.              |
 
 
 
@@ -920,7 +897,7 @@ Contents and settings of the notification the user received.
 
 OBJECT
 
-List of action buttons on the notification. Part of [OSNotificationPayload](https://documentation.kontext.in/docs#section--osnotificationpayload-).
+List of action buttons on the notification. Part of [OSNotificationPayload](#osnotificationpayload).
 
 | Parameter | Type   | Description                          |
 | --------- | ------ | ------------------------------------ |
@@ -934,7 +911,7 @@ List of action buttons on the notification. Part of [OSNotificationPayload](http
 
 OBJECT
 
-If a background image was set, this object will be available. Part of [OSNotificationPayload](https://documentation.kontextl.com/docs#section--osnotificationpayload-).
+If a background image was set, this object will be available. Part of [OSNotificationPayload](#osnotificationpayload).
 
 | Parameter         | Type   | Description                                               |
 | ----------------- | ------ | --------------------------------------------------------- |
@@ -956,7 +933,7 @@ By default Kontext will open or resume your launcher Activity when a notificatio
 </application>
 ```
 
-Make sure you are initializing `Kontext` with [setNotificationOpenedHandler](https://documentation.kontext.in/docs#section--setnotificationopenedhandler-) in the `onCreate` method in your `Application` class. You will need to call `startActivity` from this callback.
+Make sure you are initializing `Kontext` with [setNotificationOpenedHandler](#setnotificationopenedhandler) in the `onCreate` method in your `Application` class. You will need to call `startActivity` from this callback.
 
 
 

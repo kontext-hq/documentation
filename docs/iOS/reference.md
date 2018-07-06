@@ -4,9 +4,9 @@
 
 Kontext iOS Native SDK Reference
 
-!!! info "Just starting with Android?"
+!!! info "Just starting with iOS?"
 
-    Check out our Android SDK Setup guide.
+    Check out our [iOS SDK Setup](/iOS/quickstart) guide.
 
 !!! tip "Upgrade to 2.5.1+"
 
@@ -17,60 +17,60 @@ For Developers
 | Calls                                                        | Type     | Description        |
 | ------------------------------------------------------------ | -------- | ------------------ |
 | Initialization                                               |          |                    |
-| [initWithLaunchOptions](https://documentation.kontext.in/docs/ios-native-sdk#section--initwithlaunchoptions-) | Method   | Initialize Kontext |
+| [initWithLaunchOptions]( #initwithlaunchoptions)             | Method   | Initialize Kontext |
 |                                                              |          |                    |
 | Privacy                                                      |          |                    |
-| [setRequiresUserPrivacyConsent](https://documentation.kontext.in/docs/ios-native-sdk#section--setrequiresuserprivacyconsent-) | Mothod   |                    |
-| [consentGranted](https://documentation.kontext.in/docs/ios-native-sdk#section--consentgranted-) | Mothod   |                    |
-| [requiresUserPrivacyConsent](https://documentation.kontext.in/docs/ios-native-sdk#section--requiresuserprivacyconsent-) | boolean  |                    |
+| [setRequiresUserPrivacyConsent](#setrequiresuserprivacyconsent) | Mothod   |                    |
+| [consentGranted](#consentgranted)                            | Mothod   |                    |
+| [requiresUserPrivacyConsent](#requiresuserprivacyconsent)    | boolean  |                    |
 |                                                              |          |                    |
 | Settings                                                     |          |                    |
-| [KontextSettingsKeyAutoPrompt](https://documentation.kontext.in/docs/ios-native-sdk#section--kossettingskeyautoprompt-) | key      |                    |
-| [KontextSettingsKeyInAppLaunchURL](https://documentation.kontext.in/docs/ios-native-sdk#section--kossettingskeyinapplaunchurl-) | key      |                    |
-| [inFocusDisplayType](https://documentation.kontext.in/docs/ios-native-sdk#section--infocusdisplaytype-) | Property |                    |
+| [KontextSettingsKeyAutoPrompt](#kontextsettingskeyautoprompt) | key      |                    |
+| [KontextSettingsKeyInAppLaunchURL](#kontextsettingskeyinapplaunchurl) | key      |                    |
+| [inFocusDisplayType](#infocusdisplaytype)                    | Property |                    |
 |                                                              |          |                    |
 | Prompting                                                    |          |                    |
-| [promptForPushNotificationsWithUserResponse](https://documentation.kontext.in/docs/ios-native-sdk#section--promptforpushnotificationswithuserresponse-) | Method   |                    |
+| [promptForPushNotificationsWithUserResponse](#promptforpushnotificationswithuserresponse) | Method   |                    |
 |                                                              |          |                    |
 | Status                                                       |          |                    |
-| [getPermissionSubscriptionState](https://documentation.kontext.in/docs/ios-native-sdk#section--getpermissionsubscriptionstate-) | Method   |                    |
-| [addPermissionObserver](https://documentation.kontext.in/docs/ios-native-sdk#section--addpermissionobserver-) | Method   |                    |
-| [addSubscriptionObserver](https://documentation.kontext.in/docs/ios-native-sdk#section--addsubscriptionobserver-) | Method   |                    |
+| [getPermissionSubscriptionState](#getpermissionsubscriptionstate) | Method   |                    |
+| [addPermissionObserver](#addpermissionobserver)              | Method   |                    |
+| [addSubscriptionObserver](#addsubscriptionobserver)          | Method   |                    |
 |                                                              |          |                    |
 | Events                                                       |          |                    |
-| [sendEvent](https://documentation.kontext.in/docs/ios-native-sdk#section--sendtag-) | Method   |                    |
-| [sendEvents](https://documentation.kontext.in/docs/ios-native-sdk#section--sendtag-) | Method   |                    |
-| [sendScreen](https://documentation.kontext.in/docs/ios-native-sdk#section--sendtag-) | Method   |                    |
-| [sendUserAttributes](https://documentation.kontext.in/docs/ios-native-sdk#section--sendtag-) | Method   |                    |
+| [sendEvent](#sendevent)                                      | Method   |                    |
+| [sendEvents](#sendevents)                                    | Method   |                    |
+| [sendScreen](#sendscreen)                                    | Method   |                    |
+| [sendUserAttributes](#senduserattributes)                    | Method   |                    |
 |                                                              |          |                    |
 | Data                                                         |          |                    |
-| [setLocationShared](https://documentation.kontext.in/docs/ios-native-sdk#section--setLocationShared-) | Method   |                    |
-| [promptLocation](https://documentation.kontext.in/docs/ios-native-sdk#section--promptlocation-) | Method   |                    |
+| [setLocationShared]( #setlocationshared)                     | Method   |                    |
+| [promptLocation](#promptlocation)                            | Method   |                    |
 |                                                              |          |                    |
 | Sending Notifications                                        |          |                    |
-| [postNotification](https://documentation.kontext.in/docs/ios-native-sdk#section--postnotification-) | Method   |                    |
-| [clearKontextNotifications](https://documentation.kontext.in/docs/ios-native-sdk#section--clearkontextnotifications-) | Method   |                    |
-| [setSubscription](https://documentation.kontext.in/docs/ios-native-sdk#section--setsubscription-) | Method   |                    |
+| [postNotification](#postnotification)                        | Method   |                    |
+| [clearKontextNotifications](#clearkontextnotifications)      | Method   |                    |
+| [setSubscription](#setsubscription)                          | Method   |                    |
 |                                                              |          |                    |
 | Email                                                        |          |                    |
-| [setEmail](https://documentation.kontext.in/docs/ios-native-sdk#section--setemail-) | Method   |                    |
-| [logoutEmail](https://documentation.kontext.in/docs/ios-native-sdk#section--logoutemail-) | Method   |                    |
-| [addEmailSubscriptionObserver](https://documentation.kontext.in/docs/ios-native-sdk#section--addemailsubscriptionobserver-) | Method   |                    |
+| [setEmail](#setemail)                                        | Method   |                    |
+| [logoutEmail](#logoutemail)                                  | Method   |                    |
+| [addEmailSubscriptionObserver](#addemailsubscriptionobserver) | Method   |                    |
 |                                                              |          |                    |
 | Notification Events                                          |          |                    |
-| [handleNotificationReceived](https://documentation.kontext.in/docs/ios-native-sdk#section--oshandlenotificationreceivedblock-) | Method   |                    |
-| [handleNotificationAction](https://documentation.kontext.in/docs/ios-native-sdk#section--oshandlenotificationactionblock-) | Method   |                    |
+| [handleNotificationReceived](#kontexthandlenotificationreceivedblock) | Method   |                    |
+| [handleNotificationAction](#kontexthandlenotificationactionblock) | Method   |                    |
 |                                                              |          |                    |
 | Objects                                                      |          |                    |
-| [KontextNotificationOpenedResult](https://documentation.kontext.in/docs/ios-native-sdk#section--osnotificationopenedresult-) | Object   |                    |
-| [KontextNotification](https://documentation.kontext.in/docs/ios-native-sdk#section--osnotification-) | Object   |                    |
-| [KontextNotificationAction](https://documentation.kontext.in/docs/ios-native-sdk#section--osnotificationaction-) | Object   |                    |
-| [KontextNotificationActionType](https://documentation.kontext.in/docs/ios-native-sdk#section--osnotificationactiontype-) | Object   |                    |
-| [KontextNotificationDisplayType](https://documentation.kontext.in/docs/ios-native-sdk#section--osnotificationdisplaytype-) | Object   |                    |
-| [KontextNotificationPayload](https://documentation.kontext.in/docs/ios-native-sdk#section--osnotificationpayload-) | Object   |                    |
+| [KontextNotificationOpenedResult](#kontextnotificationopenedresult) | Object   |                    |
+| [KontextNotification](#kontextnotification)                  | Object   |                    |
+| [KontextNotificationAction](#kontextnotificationaction)      | Object   |                    |
+| [KontextNotificationActionType](#kontextnotificationactiontype) | Object   |                    |
+| [KontextNotificationDisplayType](#kontextnotificationdisplaytype) | Object   |                    |
+| [KontextNotificationPayload](#kontextnotificationpayload)    | Object   |                    |
 |                                                              |          |                    |
 | Debug                                                        |          |                    |
-| [setLogLevel](https://documentation.kontext.in/docs/ios-native-sdk#section--setloglevel-) | Mothod   |                    |
+| [setLogLevel](#setloglevel)                                  | Mothod   |                    |
 
 
 
@@ -86,8 +86,8 @@ Must be called from `didFinishLaunchingWithOptions` in `AppDelegate.m`.
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ` launchOptions` | NSDictionary*                                                | REQUIRED launchOptions that you received from `didFinishLaunchingWithOptions` |
 | `appId`          | NSString*                                                    | REQUIRED Your Kontext app id, available in [Keys & IDs](https://documentation.kontext.in/docs/accounts-and-keys#section-keys-ids) |
-| `callback`       | [KontextHandleNotificationReceivedBlock](https://documentation.kontext.in/docs/ios-native-sdk#section--oshandlenotificationreceivedblock-) | Function to be called when a notification is received        |
-| `callback`       | [KontextHandleNotificationActionBlock](https://documentation.kontext.in/docs/ios-native-sdk#section--oshandlenotificationactionblock-) | Function to be called when a user reacts to a notification received |
+| `callback`       | [KontextHandleNotificationReceivedBlock](#kontexthandlenotificationreceivedblock) | Function to be called when a notification is received        |
+| `callback`       | [KontextHandleNotificationActionBlock](#kontexthandlenotificationactionblock) | Function to be called when a user reacts to a notification received |
 | `settings`       | NSDictionary*                                                | Customization settings to change Kontext's default behavior  |
 
 !!! info "iOS 8+ Notes"
@@ -96,10 +96,10 @@ Must be called from `didFinishLaunchingWithOptions` in `AppDelegate.m`.
     
     2. Replace any of your `isRegisteredForRemoteNotifications` calls with `currentUserNotificationSettings` or getPermissionSubscriptionState.
 
-### iOS 8+ Notes
+iOS 8+ Notes
 
 - `application:didRegisterForRemoteNotificationsWithDeviceToken:` will still fire even if `KontextSettingsKeyAutoPrompt` is set to `false`.
-- Replace any of your `isRegisteredForRemoteNotifications` calls with `currentUserNotificationSettings` or [getPermissionSubscriptionState](https://documentation.kontext.in/docs/ios-native-sdk#section--getpermissionsubscriptionstate-).
+- Replace any of your `isRegisteredForRemoteNotifications` calls with `currentUserNotificationSettings` or [getPermissionSubscriptionState](#getpermissionsubscriptionstate).
 
 ``` swift tab="Swift"
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -191,6 +191,8 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 
 
+## Privacy
+
 ### `setRequiresUserPrivacyConsent`
 
 METHOD
@@ -246,6 +248,8 @@ You can use this property to check if the Kontext SDK is waiting for the user to
 
 
 
+## Settings
+
 ### `kontextSettingsKeyAutoPrompt`
 
 KEY
@@ -255,7 +259,7 @@ KEY
 
 
 
-### `KontextSettingsKeyInAppLaunchURL`
+### `kontextSettingsKeyInAppLaunchURL`
 
 KEY
 
@@ -303,7 +307,7 @@ Prompt the user for notification permissions. Callback fires as soon as the user
 
 #### Requirements
 
-Must set `kontextSettingsKeyAutoPrompt` to `false` when calling [initWithLaunchOptions](https://documentation.kontext.in/docs/ios-native-sdk#section--initwithlaunchoptions-).
+Must set `kontextSettingsKeyAutoPrompt` to `false` when calling [initWithLaunchOptions](#initwithlaunchoptions).
 
 #### Recommendations
 
@@ -326,6 +330,8 @@ Kontext.promptForPushNotifications(userResponse: { accepted in
 ```
 
 
+
+## Status
 
 ### `getPermissionSubscriptionState`
 
@@ -568,11 +574,13 @@ Kontext uses a weak reference to the observer to prevent leaks.
 
 
 
+## Events
+
 ### `sendEvent`
 
 METHOD
 
-Tag a user based on an app event of your choosing so later you can create segments on [kontext.in](https://kontext.in/) to target these users. Recommend using sendEvents over sendEvent if you need to set more than one tag on a user at a time.
+Tag a user based on an app event of your choosing so later you can create segments on [Kontext platform](https://app.kontext.in/) to target these users. Recommend using sendEvents over sendEvent if you need to set more than one tag on a user at a time.
 
 | Parameter              | Type                        | Description                                  |
 | ---------------------- | --------------------------- | -------------------------------------------- |
@@ -595,7 +603,7 @@ Kontext.sendEvent("key", value: "value")
 
 METHOD
 
-Tag a user based on an app event of your choosing so later you can create segments on [kontext.in](https://kontext.in/) to target these users.
+Tag a user based on an app event of your choosing so later you can create segments on [Kontext platform](https://app.kontext.in/) to target these users.
 
 | Parameter              | Type                        | Description                                           |
 | ---------------------- | --------------------------- | ----------------------------------------------------- |
@@ -617,7 +625,7 @@ Kontext.sendEvents(["key1": "value1", "key2": "value2"])
 
 METHOD
 
-Tag a user based on an app event of your choosing so later you can create segments on [kontext.in](https://kontext.in/) to target these users. Recommend using sendEvents over sendEvent if you need to set more than one tag on a user at a time.
+Tag a user based on an app event of your choosing so later you can create segments on [Kontext platform](https://app.kontext.in/) to target these users. Recommend using sendEvents over sendEvent if you need to set more than one tag on a user at a time.
 
 | Parameter              | Type                        | Description                                  |
 | ---------------------- | --------------------------- | -------------------------------------------- |
@@ -639,7 +647,7 @@ Kontext.sendScreen("ScreenName")
 
 METHOD
 
-Tag a user based on an app event of your choosing so later you can create segments on [kontext.in](https://kontext.in/) to target these users.
+Tag a user based on an app event of your choosing so later you can create segments on [Kontext platform](https://app.kontext.in/) to target these users.
 
 | Parameter              | Type                        | Description                                           |
 | ---------------------- | --------------------------- | ----------------------------------------------------- |
@@ -696,8 +704,6 @@ Kontext.promptLocation()
 METHOD
 
 Allows you to send notifications from user to user or schedule ones in the future to be delivered to the current device.
-
-See the [Create notification](https://documentation.kontext.in/reference#create-notification) REST API POST call for a list of all possible options. Note: You can only use `include_player_ids` as a targeting parameter from your app. Other target options such as `tags` and `included_segments` require your Kontext App REST API key which can only be used from your server.
 
 | Parameter              | Type                        | Description                                             |
 | ---------------------- | --------------------------- | ------------------------------------------------------- |
@@ -808,17 +814,21 @@ func onOSEmailSubscriptionChanged(_ stateChanges: OSEmailSubscriptionStateChange
 
 
 
-## Receiving Notifications
+## Notifications Events
 
 ### `KontextHandleNotificationReceivedBlock`
 
 CALLBACK
 
-Called when the app receives a notification while in focus only. *Note: If you need this to be called when your app is in the background, set content_available to true when you create your notification. The "force-quit" state (i.e app was swiped away) is not currently supported.*
+Called when the app receives a notification while in focus only.
 
-| Parameter      | Type                                                         | Description |
-| -------------- | ------------------------------------------------------------ | ----------- |
-| `notification` | [KontextNotification](https://documentation.kontext.in/docs/ios-native-sdk#section--osnotification-) |             |
+!!! info "Note+"
+
+    If you need this to be called when your app is in the background, set content_available to true when you create your notification. The "force-quit" state (i.e app was swiped away) is not currently supported.
+
+| Parameter      | Type                                        | Description |
+| -------------- | ------------------------------------------- | ----------- |
+| `notification` | [KontextNotification](#kontextnotification) |             |
 
 ```swift tab="Swift"
 { notification in
@@ -842,7 +852,7 @@ Called when the user opens or taps an action on a notification.
 
 | Parameter | Type                                                         | Description |
 | --------- | ------------------------------------------------------------ | ----------- |
-| `result`  | [KontextNotificationOpenedResult](https://documentation.kontext.in/docs/ios-native-sdk#section--osnotificationopenedresult-) |             |
+| `result`  | [KontextNotificationOpenedResult](#kontextnotificationopenedresult) |             |
 
 ```swift tab="Swift"
 { result in
@@ -894,12 +904,12 @@ Called when the user opens or taps an action on a notification.
 
 INTERFACE ELEMENT
 
-The information returned from a notification the user received. Resulting class passed to [KontextHandleNotificationActionBlock](https://documentation.kontext.in/docs/ios-native-sdk#section--oshandlenotificationactionblock-).
+The information returned from a notification the user received. Resulting class passed to [KontextHandleNotificationActionBlock](#kontexthandlenotificationactionblock).
 
 | Class Properties                                             |      |
 | ------------------------------------------------------------ | ---- |
-| `notification`([KontextNotification](https://documentation.kontext.in/docs/ios-native-sdk#section--osnotification-)); |      |
-| `action`([KontextNotificationAction](https://documentation.kontext.in/docs/ios-native-sdk#section--osnotificationaction-));\| |      |
+| `notification`([KontextNotification](#kontextnotification)); |      |
+| `action`([KontextNotificationAction](#kontextnotificationaction));\| |      |
 
 
 
@@ -911,8 +921,8 @@ The notification the user received.
 
 | Class Properties                                             |                                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `payload`([KontextNotificationPayload](https://documentation.kontext.in/docs/ios-native-sdk#section--osnotificationpayload-)); |                                                              |
-| `displayType`([KontextNotificationDisplayType](https://documentation.kontext.in/docs/ios-native-sdk#section--osnotificationdisplaytype-)); |                                                              |
+| `payload`([KontextNotificationPayload](#kontextnotificationpayload)); |                                                              |
+| `displayType`([KontextNotificationDisplayType](#kontextnotificationdisplaytype)); |                                                              |
 | `shown`(*BOOL*);                                             | True when the user was able to see the notification. False when app is in focus and in-app alerts are disabled, or the remote notification is silent. |
 | `silentNotification`(*BOOL*);                                | True when the received notification is silent. Silent means there is no alert, sound, or badge payload in the APS dictionary. Requires remote-notification within UIBackgroundModes array of the Info.plist |
 
@@ -927,7 +937,7 @@ The action the user took on the notification.
 | Class Properties                                             |                                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | `actionID`(*NSString*);                                      | The ID associated with the button tapped. NULL when the actionType is NotificationTapped or InAppAlertClosed. |
-| `type`([KontextNotificationActionType](https://documentation.kontext.in/docs/ios-native-sdk#section--osnotificationactiontype-)); | The type of the notification action.                         |
+| `type`([KontextNotificationActionType](#kontextnotificationactiontype)); | The type of the notification action.                         |
 
 
 

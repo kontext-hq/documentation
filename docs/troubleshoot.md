@@ -10,7 +10,7 @@
 
 ### Required For Setup
 
-- [A Kontext Account](https://app.kontext.in/) if you do not already have one
+- [A Kontext Account](https://kontext.in/) if you do not already have one
 - Your Kontext App ID, available in [Keys & IDs](https://documentation.kontext.in/docs/accounts-and-keys#section-app-id)
 - An iOS Push Certificate. [Generate one here](/iOS/push-certificate).
 - An iOS device (iPhone, iPad, iPod Touch) to test on. The Xcode simulator doesn't support push notifications so you must test on a real device.
@@ -258,9 +258,3 @@ In order for your application to be able to let push notifications increment/dec
 [KontextHandleNotificationReceivedBlock](/iOS/reference/#kontexthandlenotificationreceivedblock) - Called when a notification is received while your app is in focus only.
 [KontextHandleNotificationActionBlock](/iOS/reference/#kontexthandlenotificationactionblock) - This will be called when a notification is tapped on.
 See our [initWithLaunchOptions](/iOS/reference/#initwithlaunchoptions) documentation to add these.
-
-!!! success "You're Done!"
-
-    Next up: Send your first push notification via the [Kontext Dashboard](https://app.kontext.in)
-
-

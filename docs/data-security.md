@@ -34,7 +34,7 @@ Kontext uses battle tested open source software to power some parts of its appli
 
 ## Data Center Security
 
-Amazon Web Services is our hosting provider. They maintain data­centers that are fully compliant with a range of certifications which allow finance, healthcare and government data to be stored in their data­centers. A full list of compliance and more information along with certification is available at <https://aws.amazon.com/compliance/>.
+Azure Cloud is our hosting provider. They maintain data­centers that are fully compliant with a range of certifications which allow finance, healthcare and government data to be stored in their data­centers. A full list of compliance and more information along with certification is available at <https://azure.microsoft.com/en-in/support/legal/subscription-agreement-nov-2014/>.
 
 Shared responsibility with Amazon means we focus on application and data security while physical security is managed by them.
 
@@ -46,4 +46,4 @@ The security and confidentiality of your data is core to our success as a busine
 
 ## Contact Info
 
-If you notice something unusual in your account, have a question or a suggestion please e-mail us at support@kontext.in.
+If you notice something unusual in your account, have a question or a suggestion please e-mail us at [support@kontext.in](mailto:support@kontext.in).
