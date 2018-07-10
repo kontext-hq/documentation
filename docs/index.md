@@ -36,4 +36,4 @@ Users, events, segments, campaigns, and reports are central to the Kontext exper
 
 ## How do I get started?
 
-Go to our [Mobile](https://documentation.kontext.in/docs/mobile-sdk-setup) setup guides to get started implementing Kontext in your product today! If you're unable to get started, talk to your developer, and meanwhile get acquainted with [Kontext Features](https://documentation.kontext.in/docs/dashboard) in our user manual.
+1. Go to our [Android](/android-quickStart) or [iOS](ios-quickStart) setup guides to get started implementing Kontext in your product today! 

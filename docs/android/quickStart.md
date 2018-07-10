@@ -11,16 +11,19 @@
 - A device or emulator that has Google Play services installed and updated on it
 - Android Studio 2.3.3 or newer
 
-### 1. Gradle Setup
+### 1. Download the SDK
 
-**1.1** Open your app *libs* folder and paste Kontext SDK folder in it.
+[Click Here to download the SDK](https://gitlab.com/kontext/Kontext-Android-SDK/raw/master/KontextSDK-4.2.aar)
 
-**1.2** Add the following to your `dependencies` section.
+### 2. Gradle Setup
+
+**2.1** Open your app *libs* folder and paste Kontext SDK folder in it.
+
+**2.2** Add the following to your `dependencies` section.
 
 - *build.gradle*
 
 ```
-
 dependencies {
     implementation(name:'kontextSdk', ext:'aar')
     implementation 'com.google.android.gms:play-services-nearby:12.0.1'
@@ -29,12 +32,13 @@ dependencies {
 
 !!! warning "Play Services Version"
 
-    In order to get access to all Kontext SDK features update all your app play services version to 12.0.1 or above.
+```
+In order to get access to all Kontext SDK features update all your app play services version to 12.0.1 or above.
+```
 
-**1.3** Add the following in your `android` > `defaultConfig` section.
+**2.3** Add the following in your `android` > `defaultConfig` section.
 
 - Update `PUT YOUR KONTEXT APP ID HERE` with your Kontext app id
-
 - *build.gradle*
 
 ```
@@ -48,7 +52,8 @@ android {
     }
  }
 ```
-**1.4** Add the following in your `App Manifest application` tag to enable Kontext In-App messaging.
+
+**2.4** Add the following in your `App Manifest application` tag to enable Kontext In-App messaging.
 
 ```
 <application>
@@ -64,9 +69,9 @@ android {
 
 Make sure to press "Sync Now" on the banner that pops up after saving!
 
-### 2. Add Required Code
+### 3. Add Required Code
 
-**2.1** Add the following to the `onCreate` method in your `Application` class.
+**3.1** Add the following to the `onCreate` method in your `Application` class.
 
 - *Don't have an Application class? Follow our creation guide!*
 
@@ -89,15 +94,17 @@ public class YourAppClass extends Application {
 
 
 
-### 3. Create a custom default notification icon
+### 4. Create a custom default notification icon
 
-**3.1** By default, notifications will be shown with a bell icon in the notification shade. 
+**4.1** By default, notifications will be shown with a bell icon in the notification shade. 
 
 !!! warning "Troubleshooting"
 
-    If run into any issues please see our [Android troubleshooting guide](/android/troubleshoot), or our general Troubleshooting section.
+```
+If run into any issues please see our [Android troubleshooting guide](/android/troubleshoot), or our general Troubleshooting section.
+```
 
-### 4. Add Information to a User Profile
+### 5. Add Information to a User Profile
 
 RECOMMENDED
 
@@ -125,7 +132,7 @@ JSONObject userProfile = new JSONObject();
       }
 ```
 
-### 5. Track Screen Activity
+### 6. Track Screen Activity
 
 RECOMMENDED
 
@@ -137,7 +144,7 @@ To send screen activity to Kontext, you will have to call the [sendScreen](/andr
 Kontext.sendScreen("Screen Name");
 ```
 
-### 5. Track Custom Events
+### 7. Track Custom Events
 
 RECOMMENDED
 

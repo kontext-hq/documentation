@@ -4,7 +4,9 @@
 
 !!! tip "Upgrade to 2.5.1+"
 
-     A number the methods and classes below were recently added in our 3.5.1 SDK. Make sure you have updated to this version.
+```
+ A number the methods and classes below were recently added in our 3.5.1 SDK. Make sure you have updated to this version.
+```
 
 
 
@@ -16,31 +18,37 @@
 - An iOS device (iPhone, iPad, iPod Touch) to test on. The Xcode simulator doesn't support push notifications so you must test on a real device.
 - A Mac with a new version of Xcode
 
-### 1. Add Notification Service Extension
 
-**1.1** In Xcode Select `File` > `New` > `Target...`
 
-**1.2** Select `Notification Service Extension` then press `Next`.
+### 1. Download the SDK
+
+[Click Here to download the SDK](https://gitlab.com/kontext/Kontext-Android-SDK/raw/master/KontextSDK-4.2.aar)
+
+### 2. Add Notification Service Extension
+
+**2.1** In Xcode Select `File` > `New` > `Target...`
+
+**2.2** Select `Notification Service Extension` then press `Next`.
 
 ### IMAGE
 
-**1.3** Enter the product name as `KontextNotificationServiceExtension` and press `Finish`.
+**2.3** Enter the product name as `KontextNotificationServiceExtension` and press `Finish`.
 
 ### IMAGE
 
-**1.4** Press Cancel on the Activate scheme prompt.
+**2.4** Press Cancel on the Activate scheme prompt.
 
 ### IMAGE
 
 By cancelling, you are keeping Xcode debugging your app, instead of just the extension. If you activate by accident, you can always switch back to debug your app within Xcode (next to the play button).
 
-**1.5** Open the Xcode project settings and select the KontextNotificationServiceExtension target. Unless you have a specific reason not to, you should set the `Deployment Target` to be iOS 10.
+**2.5** Open the Xcode project settings and select the KontextNotificationServiceExtension target. Unless you have a specific reason not to, you should set the `Deployment Target` to be iOS 10.
 
 ### IMAGE
 
-**1.6** Open `NotificationService.m` or `NotificationService.swift` and replace the whole file contents with the below code.
+**2.6** Open `NotificationService.m` or `NotificationService.swift` and replace the whole file contents with the below code.
 
-```swift tab="Swift"
+```swift tab="swift"
 import UserNotifications
 
 import Kontext
@@ -74,7 +82,7 @@ class NotificationService: UNNotificationServiceExtension {
 }
 ```
 
-```objective-c tab="Objective-C"
+```objective-c tab="objective-c"
 #import <Kontext/Kontext.h>
 
 #import "NotificationService.h"
@@ -121,20 +129,20 @@ class NotificationService: UNNotificationServiceExtension {
 
 
 
-### 2. Import Kontext into your Xcode project
+### 3. Import Kontext into your Xcode project
 
 [Setup CocoaPods](http://guides.cocoapods.org/using/getting-started.html) on your system if you don't have it already.
 
 - Make sure you have version `1.1.0` or newer by running `pod --version` from the terminal.
 - Run the following to upgrade `sudo gem install cocoapods`
 
-**2.1** Make sure your current Xcode project is closed.
+**3.1** Make sure your current Xcode project is closed.
 
-**2.2** Run `pod init` from the terminal in your project directory.
+**3.2** Run `pod init` from the terminal in your project directory.
 
-**2.3** Open the newly created `Podfile` with your favorite code editor such as Sublime.
+**3.3** Open the newly created `Podfile` with your favorite code editor such as Sublime.
 
-**2.4** Add `pod 'Kontext', '>= 2.5.2', '< 3.0'` in your project name target as well as `KontextNotificationServiceExtension`.
+**3.4** Add `pod 'Kontext', '>= 2.5.2', '< 3.0'` in your project name target as well as `KontextNotificationServiceExtension`.
 
 ```
 target 'project_name' do
@@ -146,33 +154,31 @@ target 'KontextNotificationServiceExtension' do
 end
 ```
 
-**2.5** Run the following from the terminal.
+**3.5** Run the following from the terminal.
 
 ```ter
 pod repo update
 pod install
 ```
 
-**2.6** Open the newly created `.xcworkspace` file. *Make sure to always open the workspace from now on.* 
+**3.6** Open the newly created `.xcworkspace` file. *Make sure to always open the workspace from now on.* 
 
-**2.7** Continue to Steps 3 and 4 below
+**3.7** Continue to Steps 3 and 4 below
 
 
 
-### 3. Add Required Capabilities
+### 4. Add Required Capabilities
 
-**3.1** Select the root project and Under Capabilities Enable "Push Notifications".
-**3.2** Next Enable "Background Modes" and check "Remote notifications".
+**4.1** Select the root project and Under Capabilities Enable "Push Notifications".
+**4.2** Next Enable "Background Modes" and check "Remote notifications".
 
 ### IMAGE
 
-
-
-### 4. Add Required Code
+### 5. Add Required Code
 
 Add following Kontext initialization code to your `AppDelegate`.
 
-```swift tab="Swift"
+```swift tab="swift"
 import Kontext
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -197,7 +203,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-```objective-c tab="Objective-C"
+```objective-c tab="objective-c"
 #import <Kontext/Kontext.h>
 
 @implementation AppDelegate
@@ -223,31 +229,35 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 !!! info "Note"
 
-    Kontext `initWithLaunchOptions` must be called from your `didFinishLaunchingWithOptions`, as in the example above.
+```
+Kontext `initWithLaunchOptions` must be called from your `didFinishLaunchingWithOptions`, as in the example above.
+```
 
 !!! Warning "Troubleshooting"
 
-    If run into any issues please see our [iOS troubleshooting guide](/iOS/troubleshoot).
+```
+If run into any issues please see our [iOS troubleshooting guide](/iOS/troubleshoot).
+```
 
 
 
-### 5. Add Email
+### 6. Add Email
 
 RECOMMENDED
 
 Next, if you collect emails from users, you can set a user's email with the `setEmail` method. This enables Kontext Email Messaging, which allows you to send emails in addition to push.
 
-```swift tab="Swift"
+```swift tab="swift"
 Kontext.setEmail("example@domain.com");
 ```
 
-```objective-c tab="Objective-C"
+```objective-c tab="objective-c"
 [Kontext setEmail:@"example@domain.com"];
 ```
 
 
 
-### 6. Add App Groups (Optional but Recommended)
+### 7. Add App Groups (Optional but Recommended)
 
 In order for your application to be able to let push notifications increment/decrement the badge count, you need to set up an **App Group** for your application.
 
@@ -259,8 +269,11 @@ In order for your application to be able to let push notifications increment/dec
 [KontextHandleNotificationActionBlock](/iOS/reference/#kontexthandlenotificationactionblock) - This will be called when a notification is tapped on.
 See our [initWithLaunchOptions](/iOS/reference/#initwithlaunchoptions) documentation to add these.
 
+
+
 !!! success "You're Done!"
 
-    Next up: Send your first push notification via the [Kontext Dashboard](https://app.kontext.in)
-
+```
+Next up: Send your first push notification via the [Kontext Dashboard](https://app.kontext.in)
+```
 
