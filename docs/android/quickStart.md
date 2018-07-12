@@ -17,7 +17,7 @@
 
 ### 2. Gradle Setup
 
-**2.1** Open your app *libs* folder and paste Kontext SDK folder in it.
+**2.1** Place Kontext SDK in your app's *libs* folder.
 
 **2.2** Add the following to your `dependencies` section.
 
@@ -27,6 +27,7 @@
 dependencies {
     implementation(name:'kontextSdk', ext:'aar')
     implementation 'com.google.android.gms:play-services-nearby:12.0.1'
+    implementation 'com.android.installreferrer:installreferrer:1.0'
 }
 ```
 
