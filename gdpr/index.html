@@ -1,0 +1,750 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Android & iOS SDK Integration">
+      
+      
+        <link rel="canonical" href="https://documentation.kontext.in/gdpr/">
+      
+      
+        <meta name="author" content="Akshay Dekate">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.5, mkdocs-material-2.9.2">
+    
+    
+      
+        <title>GDPR - Kontext Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.ba0fd1a6.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.6079476c.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#gdpr-overview" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://documentation.kontext.in/" title="Kontext Documentation" class="md-header-nav__button md-logo">
+          
+            <img src="../images/logo.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Kontext Documentation
+              </span>
+              <span class="md-header-nav__topic">
+                GDPR
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." title="Overview" class="md-tabs__link md-tabs__link--active">
+        Overview
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../android/quickstart/" title="Android" class="md-tabs__link">
+          Android
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../iOS/quickstart/" title="iOS" class="md-tabs__link">
+          iOS
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <span class="md-nav__button md-logo">
+      
+        <img src="../images/logo.png" width="48" height="48">
+      
+    </span>
+    Kontext Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../android-quickstart/" title="Android Quickstart" class="md-nav__link">
+      Android Quickstart
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../iOS-quickstart/" title="iOS Quickstart" class="md-nav__link">
+      iOS Quickstart
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        GDPR
+      </label>
+    
+    <a href="./" title="GDPR" class="md-nav__link md-nav__link--active">
+      GDPR
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kontext-gdpr-and-you" title="Kontext, GDPR, and you" class="md-nav__link">
+    Kontext, GDPR, and you
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#informing-your-end-users" title="Informing your end users" class="md-nav__link">
+    Informing your end users
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-consent-for-data-collection" title="User consent for data collection" class="md-nav__link">
+    User consent for data collection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#block-data-collection-and-processing" title="Block data collection and processing" class="md-nav__link">
+    Block data collection and processing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erasing-user-data" title="Erasing user data" class="md-nav__link">
+    Erasing user data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-access-and-portability" title="Data access and portability" class="md-nav__link">
+    Data access and portability
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rectify-user-data" title="Rectify user data" class="md-nav__link">
+    Rectify user data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-support" title="Additional support" class="md-nav__link">
+    Additional support
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../data-security/" title="Security Overview" class="md-nav__link">
+      Security Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Android
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Android
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../android/quickstart/" title="Quick Start" class="md-nav__link">
+      Quick Start
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../android/reference/" title="SDK Reference" class="md-nav__link">
+      SDK Reference
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../android/firebasekey/" title="Generate Firebase Key" class="md-nav__link">
+      Generate Firebase Key
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../android/troubleshoot/" title="Troubleshooting" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      iOS
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        iOS
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../iOS/quickstart/" title="Quick Start" class="md-nav__link">
+      Quick Start
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../iOS/reference/" title="SDK Reference" class="md-nav__link">
+      SDK Reference
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../iOS/push-certificate/" title="Generate an iOS Push Cert" class="md-nav__link">
+      Generate an iOS Push Cert
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../iOS/troubleshoot/" title="Troubleshooting" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kontext-gdpr-and-you" title="Kontext, GDPR, and you" class="md-nav__link">
+    Kontext, GDPR, and you
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#informing-your-end-users" title="Informing your end users" class="md-nav__link">
+    Informing your end users
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-consent-for-data-collection" title="User consent for data collection" class="md-nav__link">
+    User consent for data collection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#block-data-collection-and-processing" title="Block data collection and processing" class="md-nav__link">
+    Block data collection and processing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erasing-user-data" title="Erasing user data" class="md-nav__link">
+    Erasing user data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-access-and-portability" title="Data access and portability" class="md-nav__link">
+    Data access and portability
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rectify-user-data" title="Rectify user data" class="md-nav__link">
+    Rectify user data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-support" title="Additional support" class="md-nav__link">
+    Additional support
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="gdpr-overview">GDPR Overview<a class="headerlink" href="#gdpr-overview" title="Permanent link">&para;</a></h1>
+<div class="admonition question">
+<p class="admonition-title">Have Suggestion?</p>
+<p>Kindly drop us a line at <a href="mailto:support@kontext.in">support@kontext.in</a></p>
+</div>
+<p>The GDPR (General Data Protection Regulation) is set to take effect May 25, 2018, and its regulations apply to any company, person, or group that collects, processes, or otherwise handles the personal data of EU and UK residents.</p>
+<h2 id="kontext-gdpr-and-you">Kontext, GDPR, and you<a class="headerlink" href="#kontext-gdpr-and-you" title="Permanent link">&para;</a></h2>
+<p>The GDPR defines two different types of organizations who have to follow the new regulations: data controllers and data processors.</p>
+<ul>
+<li><strong>Data controllers</strong> determine why and how personal data is processed. As a Kontext customer, your organization is considered a data controller.</li>
+<li><strong>Data processors</strong> process user data on behalf of the controller. Kontext processes user data on your behalf, which makes us a data processor.</li>
+</ul>
+<p>As a processor, we provide the technical capabilities and organizational processes that will allow you, our customers, to maintain the rights of your EU and UK users while using our product.</p>
+<p>See below for some common tasks to help you remain GDPR compliant while using Kontext. The information below is not legal advice. We recommend you work with a lawyer to understand exactly how GDPR applies to your organization.</p>
+<h2 id="informing-your-end-users">Informing your end users<a class="headerlink" href="#informing-your-end-users" title="Permanent link">&para;</a></h2>
+<p>As a data controller, you have to inform your end-users about the personal data you collect from them and their rights surrounding this data. The GDPR lays out several requirements for what you must inform your end-users, and it’s up to you to provide the information in a transparent, accessible way.</p>
+<p>For more details on how Kontext handles and protects your users’ data, refer to the security information in your contract’s data processing addendum.</p>
+<h2 id="user-consent-for-data-collection">User consent for data collection<a class="headerlink" href="#user-consent-for-data-collection" title="Permanent link">&para;</a></h2>
+<p>GDPR sets standards (such as consent or legitimate interest) for when it's lawful to process data. It's up to you, the controller, to ensure that all the data you send to Kontext is lawful. We recommend you work with legal counsel to determine which rationale for data processing applies to you.</p>
+<p>To prevent data collection through Kontext, do not call Kontext.start() until after the user opts-in for data collection. You can also offer separate opt-out prompts for different messaging channels in Kontext. Giving users more options to control their app experience might encourage them to consent (opt-in) to data collection.</p>
+<p>For example, if a user opts-in to data collection in general, but not to email or push, your app should call Kontext.logoutEmail and the opt-out methods for the push and email channels. </p>
+<h2 id="block-data-collection-and-processing">Block data collection and processing<a class="headerlink" href="#block-data-collection-and-processing" title="Permanent link">&para;</a></h2>
+<p>If a user objects to data processing, you can prevent Kontext from collecting and processing data for that user with the <code class="codehilite">logout</code> API request.</p>
+<p><code class="codehilite">logout</code> will stop Kontext from collecting data for that user moving forward. In order to ensure that Kontext does not process this user’s old data, we will delete all of their data from our systems.</p>
+<p>For more details, please see our <a href="../android/reference#logoutemail">logout API documentation</a></p>
+<h2 id="erasing-user-data">Erasing user data<a class="headerlink" href="#erasing-user-data" title="Permanent link">&para;</a></h2>
+<p>Under GDPR, data subjects have the right to request the deletion or removal of personal data.</p>
+<p>To delete a user’s data from Kontext, you can use the deleteUser request, which will delete all user profile information for that user. To also erase all historical data for the user, include the <code class="codehilite">fullErasure</code> flag and set it to <code class="codehilite">true</code>. See our API documentation for more on the deleteUser call.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>If you export Kontext data into your backup locations, then you are responsible for handling GDPR requests in that data.</p>
+</div>
+<h2 id="data-access-and-portability">Data access and portability<a class="headerlink" href="#data-access-and-portability" title="Permanent link">&para;</a></h2>
+<p>Users also have the right to request a copy of their personal data in a human or machine-readable format. The GDPR also specifies that data subjects can obtain and reuse their personal data for their own purposes (for example, to create an account with a competing service).</p>
+<h2 id="rectify-user-data">Rectify user data<a class="headerlink" href="#rectify-user-data" title="Permanent link">&para;</a></h2>
+<p>As a data controller, you must give users the ability to correct personal data if they feel it is inaccurate or incomplete. In Kontext, this includes user location, user attributes, and device attributes.</p>
+<p>Use the <a href="../android/reference#senduserattributes">sendUserAttributes</a> API request to change a user's attributes or location data in Kontext. </p>
+<h2 id="additional-support">Additional support<a class="headerlink" href="#additional-support" title="Permanent link">&para;</a></h2>
+<p>If you are unsure of how to use some of the methods or processes above, contact <a href="mailto:support@kontext.in">support@Kontext.in</a> for assistance. We are happy to answer any questions on how to use our platform. Of course, please do not mistake this for legal advice. If you have legal questions about the GDPR, we urge you to consult with your lawyer.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../iOS-quickstart/" title="iOS Quickstart" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                iOS Quickstart
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../data-security/" title="Security Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Security Overview
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2018 Adpin Technologies Pvt. Ltd.
+          </div>
+        
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="http://struct.cc" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/kontext" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/yourkontext" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/in/kontext" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.150a6ebd.js"></script>
+      
+      <script>app.initialize({version:"0.17.5",url:{base:".."}})</script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","None","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>
