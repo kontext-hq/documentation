@@ -22,7 +22,7 @@
 site_name: Kontext Documentation
 site_description: Android & iOS SDK Integration
 site_author: Akshay Dekate
-site_url: https://documentation.kontext.in/
+site_url: https://kontext-hq.github.io/documentation/
 
 # Repository
 # repo_name: squidfunk/mkdocs-material
