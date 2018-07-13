@@ -18,7 +18,7 @@
 
 ### 1. Download the SDK
 
-[Click Here to download the SDK](https://gitlab.com/kontext/Kontext-Android-SDK/raw/master/KontextSDK-4.2.aar)
+[Click Here to download the SDK](https://github.com/kontext-hq/documentation/blob/master/docs/sdk/Kontext.framework.zip?raw=true)
 
 ### 2. Import Kontext into your Xcode project
 

@@ -13,7 +13,7 @@
 
 ### 1. Download the SDK
 
-[Click Here to download the SDK](https://gitlab.com/kontext/Kontext-Android-SDK/raw/master/KontextSDK-4.2.aar)
+[Click Here to download the SDK](https://github.com/kontext-hq/documentation/blob/master/docs/sdk/kontextSDK.aar?raw=true)
 
 ### 2. Gradle Setup
 
