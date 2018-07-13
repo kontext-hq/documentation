@@ -109,7 +109,7 @@ pages:
   - Android Quickstart: android-quickstart.md
   - iOS Quickstart: iOS-quickstart.md
   # - Troubleshooting: troubleshoot.md
-  # - GDPR: gdpr.md
+  - GDPR: gdpr.md
   - Security Overview: data-security.md
   - Android:
     - Quick Start: android/quickstart.md
