@@ -13,7 +13,7 @@
         <meta name="description" content="Android & iOS SDK Integration">
       
       
-        <link rel="canonical" href="https://documentation.kontext.in/iOS/push-certificate/">
+        <link rel="canonical" href="https://kontext-hq.github.io/documentation/iOS/push-certificate/">
       
       
         <meta name="author" content="Akshay Dekate">
@@ -94,7 +94,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://documentation.kontext.in/" title="Kontext Documentation" class="md-header-nav__button md-logo">
+        <a href="https://kontext-hq.github.io/documentation/" title="Kontext Documentation" class="md-header-nav__button md-logo">
           
             <img src="../../images/logo.png" width="24" height="24">
           
@@ -588,33 +588,34 @@
 <h3 id="1-create-certificate-request-manually">1. Create Certificate Request Manually<a class="headerlink" href="#1-create-certificate-request-manually" title="Permanent link">&para;</a></h3>
 <p><strong>1.1</strong> Open Keychain Access on your Mac OS X system. It may be located in "Applications" &gt; "Utilities" &gt; "Keychain Access"</p>
 <p><strong>1.2</strong> Select "Keychain Access"&gt;"Certificate Assistant"&gt;"Request a Certificate From a Certificate Authority..."</p>
-<p>IMAGE</p>
+<p><img alt="Screenshot" src="../../assets/images/ios-1.png" /></p>
 <p><strong>1.3</strong> Select the "Save to disk" option and enter your information in the required fields. This creates a certification request file that will be used later.</p>
-<p>IMAGE</p>
+<p><img alt="Screenshot" src="../../assets/images/ios-2.png" /></p>
 <h3 id="2-enable-push-notifications-and-apply-the-certification-request-to-generate-certificate">2. Enable Push Notifications and apply the Certification Request to generate Certificate<a class="headerlink" href="#2-enable-push-notifications-and-apply-the-certification-request-to-generate-certificate" title="Permanent link">&para;</a></h3>
 <p><strong>2.1</strong> Select your app from the <a href="https://developer.apple.com/account/ios/identifier/bundle">Apple's Developer site</a> and press "Edit"</p>
-<p>IMAGE</p>
+<p><img alt="Screenshot" src="../../assets/images/ios-3.png" /></p>
 <p><strong>2.2</strong> Scroll down to the bottom and enable Push Notifications. Press Done, but do not configure either Production or Development certificate.</p>
 <p>Instead, go to <a href="https://developer.apple.com/account/ios/certificate/create">Add iOS Certificate</a> and select "<strong>Apple Push Notification service SSL (Sandbox &amp; Production)</strong>" and click Continue.</p>
 <p>This certificate will be applicable to both Sandbox and Production environments, so you do not need a separate key for each one.</p>
-<p>IMAGE</p>
+<p><img alt="Screenshot" src="../../assets/images/ios-4.png" /></p>
 <p><strong>2.3</strong> Choose an App ID from the App ID pop-up menu, and click Continue.</p>
 <p><strong>2.4</strong> Press Continue</p>
 <p><strong>2.5</strong> Press "Choose File..", select the "certSigningRequest" file you saved in step 1, press open, and then press "Generate".</p>
-<p>IMAGE</p>
+<p><img alt="Screenshot" src="../../assets/images/ios-5.png" /></p>
 <p><strong>2.6</strong> Press Download to save your certificate</p>
+<p><img alt="Screenshot" src="../../assets/images/ios-6.png" /></p>
 <h3 id="3-creating-a-private-key">3. Creating a Private Key<a class="headerlink" href="#3-creating-a-private-key" title="Permanent link">&para;</a></h3>
 <p><strong>3.1</strong> Open the .cer file you downloaded in the last step by double clicking on it in Finder.</p>
-<p>IMAGE</p>
+<p><img alt="Screenshot" src="../../assets/images/ios-7.png" /></p>
 <p><strong>3.2</strong> After a few seconds the "Keychain Access" program should pop up. Select Login &gt; My Certificates then right click on your key in the list and select "Export"</p>
-<p>IMAGE</p>
+<p><img alt="Screenshot" src="../../assets/images/ios-8.png" /></p>
 <p><strong>3.3</strong> Give the file a unique name using the <code class="codehilite"><span class="na">.p12</span></code> extension, and press save. You will have an option to protect the file with a password. If you add a password, you need to enter this same password on Kontext.</p>
 <h3 id="4-upload-your-push-certificate-to-kontext">4. Upload Your Push Certificate to Kontext<a class="headerlink" href="#4-upload-your-push-certificate-to-kontext" title="Permanent link">&para;</a></h3>
 <p>If you haven't already, you should <a href="https://kontext.in/">set up your Kontext account</a>.</p>
 <p><strong>4.1</strong> Select your app from the All Apps page in Kontext, then go to "App Settings" and press Configure to the right of the Apple iOS Settings.</p>
-<p>IMAGE</p>
+<p><img alt="Screenshot" src="../../assets/images/ios-9.png" /></p>
 <p><strong>4.2</strong> Select the .p12 you exported along with a password if you added one and press Save.</p>
-<p>IMAGE</p>
+<p><img alt="Screenshot" src="../../assets/images/ios-10.png" /></p>
 <div class="admonition warning">
 <p class="admonition-title">Troubleshooting</p>
 <p>If you are running into any issues you can try troubleshooting them with our <a href="../../iOS/troubleshoot">iOS Troubleshooting</a></p>
