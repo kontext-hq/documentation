@@ -9,7 +9,7 @@
 ### Required For Setup
 
 - [A Kontext Account](https://app.kontext.in/) if you do not already have one
-- Your Kontext App ID, available in [Keys & IDs](https://documentation.kontext.in/docs/accounts-and-keys#section-app-id)
+- Your Kontext App ID and secret provided by Kontext team.
 - An iOS Push Certificate. [Generate one here](/iOS/push-certificate).
 - An iOS device (iPhone, iPad, iPod Touch) to test on. The Xcode simulator doesn't support push notifications so you must test on a real device.
 - A Mac with a new version of Xcode

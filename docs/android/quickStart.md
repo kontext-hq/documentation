@@ -6,8 +6,7 @@
 ### Required For Setup
 
 - [A Kontext Account](https://app.kontext.in/), if you do not already have one
-- Your Kontext App ID, available in [Keys & IDs](/android/firebasekey)
-- [A Google/Firebase Server API Key](/android/firebase/key)
+- Your Kontext App ID & Secret provided by Kontext team
 - A device or emulator that has Google Play services installed and updated on it
 - Android Studio 2.3.3 or newer
 
