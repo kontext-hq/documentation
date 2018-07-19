@@ -21,12 +21,17 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://kontext-hq.github.io/documentation/gdpr/</loc>
+     <loc>https://kontext-hq.github.io/documentation/privacy/</loc>
      <lastmod>2018-07-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://kontext-hq.github.io/documentation/terms/</loc>
+     <lastmod>2018-07-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://kontext-hq.github.io/documentation/gdpr/</loc>
      <lastmod>2018-07-19</lastmod>
      <changefreq>daily</changefreq>
     </url>
