@@ -19,13 +19,29 @@
 
 **2.1** Place Kontext SDK in your app's *libs* folder.
 
-**2.2** Add the following to your `dependencies` section.
+**2.2** Add the following to your `allprojects` section.
+
+- *build.gradle*
+
+```
+allprojects {
+    repositories {
+        google()
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+```
+
+**2.3** Add the following to your `dependencies` section.
 
 - *build.gradle*
 
 ```
 
 dependencies {
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation(name:'kontextSdk', ext:'aar')
     implementation 'com.google.android.gms:play-services-nearby:12.0.1'
     implementation 'com.android.installreferrer:installreferrer:1.0'
@@ -36,24 +52,24 @@ dependencies {
 
     In order to get access to all Kontext SDK features update all your app play services version to 12.0.1 or above.
 
-**2.3** Add the following in your `android` > `defaultConfig` section.
+**2.4** Add the following in your `android` > `defaultConfig` section.
 
-- Update `PUT YOUR KONTEXT APP ID HERE` with your Kontext app id
-
+- Update `PUT YOUR KONTEXT APP ID HERE` with your Kontext app id.
+- Update `PUT YOUR KONTEXT APP SECRET HERE` with your Kontext app secret.
 - *build.gradle*
 
 ```
 android {
    defaultConfig {
       manifestPlaceholders = [
-          kontext_app_id: 'PUT YOUR KONTEXT APP ID HERE',
-          // Project number pulled from dashboard, local value is ignored.
+          kontext_app_id: "PUT YOUR KONTEXT APP ID HERE",
+          kontext_app_secret: "PUT YOUR KONTEXT APP SECRET HERE",
           kontext_google_project_number: 'REMOTE'
       ]
     }
  }
 ```
-**2.4** Add the following in your `App Manifest application` tag to enable Kontext In-App messaging.
+**2.5** Add the following in your `App Manifest application` tag to enable Kontext In-App messaging.
 
 ```
 <application>
@@ -85,6 +101,7 @@ public class YourAppClass extends Application {
      
       // Kontext Initialization
       Kontext.startInit(this)
+        .autoPromptLocation(true)
         .inFocusDisplaying(Kontext.OSInFocusDisplayOption.Notification)
         .unsubscribeWhenNotificationsAreDisabled(true)
         .init();
