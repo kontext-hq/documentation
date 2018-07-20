@@ -690,7 +690,7 @@
 <p><a href="https://github.com/kontext-hq/documentation/blob/master/docs/sdk/kontextSDK.aar?raw=true">Click Here to download the SDK</a></p>
 <h3 id="2-gradle-setup">2. Gradle Setup<a class="headerlink" href="#2-gradle-setup" title="Permanent link">&para;</a></h3>
 <p><strong>2.1</strong> Place Kontext SDK in your app's <em>libs</em> folder.</p>
-<p><strong>2.2</strong> Add the following to your <code class="codehilite">dependencies</code> section.</p>
+<p><strong>2.2</strong> Add the following to your <code class="codehilite">allprojects</code> section.</p>
 <ul>
 <li><em>build.gradle</em></li>
 </ul>
@@ -698,7 +698,31 @@
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>dependencies {
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>allprojects {
+    repositories {
+        google()
+        flatDir {
+            dirs &#39;libs&#39;
+        }
+    }
+}
+</pre></div>
+</td></tr></table>
+
+<p><strong>2.3</strong> Add the following to your <code class="codehilite">dependencies</code> section.</p>
+<ul>
+<li><em>build.gradle</em></li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>dependencies {
+    implementation fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
     implementation(name:&#39;kontextSdk&#39;, ext:&#39;aar&#39;)
     implementation &#39;com.google.android.gms:play-services-nearby:12.0.1&#39;
     implementation &#39;com.android.installreferrer:installreferrer:1.0&#39;
@@ -713,9 +737,10 @@
 </pre></div>
 </td></tr></table>
 
-<p><strong>2.3</strong> Add the following in your <code class="codehilite">android</code> &gt; <code class="codehilite">defaultConfig</code> section.</p>
+<p><strong>2.4</strong> Add the following in your <code class="codehilite">android</code> &gt; <code class="codehilite">defaultConfig</code> section.</p>
 <ul>
-<li>Update <code class="codehilite">PUT YOUR KONTEXT APP ID HERE</code> with your Kontext app id</li>
+<li>Update <code class="codehilite">PUT YOUR KONTEXT APP ID HERE</code> with your Kontext app id.</li>
+<li>Update <code class="codehilite">PUT YOUR KONTEXT APP SECRET HERE</code> with your Kontext app secret.</li>
 <li><em>build.gradle</em></li>
 </ul>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -730,7 +755,7 @@
    defaultConfig {
       manifestPlaceholders = [
           kontext_app_id: &#39;PUT YOUR KONTEXT APP ID HERE&#39;,
-          // Project number pulled from dashboard, local value is ignored.
+          kontext_app_secret: &quot;PUT YOUR KONTEXT APP SECRET HERE&quot;,
           kontext_google_project_number: &#39;REMOTE&#39;
       ]
     }
@@ -738,7 +763,7 @@
 </pre></div>
 </td></tr></table>
 
-<p><strong>2.4</strong> Add the following in your <code class="codehilite">App Manifest application</code> tag to enable Kontext In-App messaging.</p>
+<p><strong>2.5</strong> Add the following in your <code class="codehilite">App Manifest application</code> tag to enable Kontext In-App messaging.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -773,7 +798,8 @@
 11
 12
 13
-14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">com.kontext.Kontext</span><span class="o">;</span>
+14
+15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">com.kontext.Kontext</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">YourAppClass</span> <span class="kd">extends</span> <span class="n">Application</span> <span class="o">{</span>
    <span class="nd">@Override</span>
@@ -782,6 +808,7 @@
 
       <span class="c1">// Kontext Initialization</span>
       <span class="n">Kontext</span><span class="o">.</span><span class="na">startInit</span><span class="o">(</span><span class="k">this</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">autoPromptLocation</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
         <span class="o">.</span><span class="na">inFocusDisplaying</span><span class="o">(</span><span class="n">Kontext</span><span class="o">.</span><span class="na">OSInFocusDisplayOption</span><span class="o">.</span><span class="na">Notification</span><span class="o">)</span>
         <span class="o">.</span><span class="na">unsubscribeWhenNotificationsAreDisabled</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
         <span class="o">.</span><span class="na">init</span><span class="o">();</span>
