@@ -678,51 +678,41 @@
 <h3 id="required-for-setup">Required For Setup<a class="headerlink" href="#required-for-setup" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://app.kontext.in/">A Kontext Account</a>, if you do not already have one</li>
-<li>Your Kontext App ID &amp; Secret provided by Kontext team</li>
+<li>Your Kontext App ID, available in <a href="../android/firebasekey">Keys &amp; IDs</a></li>
 <li><a href="../android/firebase/key">A Google/Firebase Server API Key</a></li>
 <li>A device or emulator that has Google Play services installed and updated on it</li>
 <li>Android Studio 2.3.3 or newer</li>
 </ul>
 <h3 id="1-download-the-sdk">1. Download the SDK<a class="headerlink" href="#1-download-the-sdk" title="Permanent link">&para;</a></h3>
-<p><a href="https://github.com/kontext-hq/documentation/blob/master/docs/sdk/kontextSDK.aar?raw=true">Click Here to download the SDK</a></p>
+<p><a href="https://gitlab.com/kontext/Kontext-Android-SDK/raw/master/KontextSDK-4.2.aar">Click Here to download the SDK</a></p>
 <h3 id="2-gradle-setup">2. Gradle Setup<a class="headerlink" href="#2-gradle-setup" title="Permanent link">&para;</a></h3>
 <p><strong>2.1</strong> Place Kontext SDK in your app's <em>libs</em> folder.</p>
-<p><strong>2.2</strong> Add the following to your <code class="codehilite">allprojects</code> section.</p>
+<p><strong>2.2</strong> Add the following to your <code class="codehilite">dependencies</code> section.</p>
 <ul>
 <li><em>build.gradle</em></li>
 </ul>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>allprojects {
-    repositories {
-        google()
-        flatDir {
-            dirs &#39;libs&#39;
-        }
-    }
-}
-</pre></div>
-</td></tr></table>
-
-<p><strong>2.3</strong> Add the following to your <code class="codehilite">dependencies</code> section.</p>
-<ul>
-<li><em>build.gradle</em></li>
-</ul>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>dependencies {
-    implementation fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>dependencies {
     implementation(name:&#39;kontextSdk&#39;, ext:&#39;aar&#39;)
+
+    // To access Nearby services
     implementation &#39;com.google.android.gms:play-services-nearby:12.0.1&#39;
+
+    // To attribute App install
     implementation &#39;com.android.installreferrer:installreferrer:1.0&#39;
+
+    // To access Location services
+    implementation &quot;com.google.android.gms:play-services-location:12.0.1&quot;
 }
 </pre></div>
 </td></tr></table>
@@ -731,11 +721,14 @@
 <p class="admonition-title">Play Services Version</p>
 <p>In order to get access to all Kontext SDK features update all your app play services version to 12.0.1 or above.</p>
 </div>
-<p><strong>2.4</strong> Add the following in your <code class="codehilite">android</code> &gt; <code class="codehilite">defaultConfig</code> section.</p>
+<p><strong>2.3</strong> Add the following in your <code class="codehilite">android</code> &gt; <code class="codehilite">defaultConfig</code> section.</p>
 <ul>
-<li>Update <code class="codehilite">PUT YOUR KONTEXT APP ID HERE</code> with your Kontext app id.</li>
-<li>Update <code class="codehilite">PUT YOUR KONTEXT APP SECRET HERE</code> with your Kontext app secret.</li>
-<li><em>build.gradle</em></li>
+<li>
+<p>Update <code class="codehilite">PUT YOUR KONTEXT APP ID HERE</code> with your Kontext app id</p>
+</li>
+<li>
+<p><em>build.gradle</em></p>
+</li>
 </ul>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -748,15 +741,15 @@
 9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>android {
    defaultConfig {
       manifestPlaceholders = [
-          kontext_app_id: &quot;PUT YOUR KONTEXT APP ID HERE&quot;,
-          kontext_app_secret: &quot;PUT YOUR KONTEXT APP SECRET HERE&quot;,
-          kontext_google_project_number: &#39;REMOTE&#39;
+          kontext_app_id: &#39;PUT YOUR KONTEXT APP ID HERE&#39;,
+          kontext_app_secret: &#39;PUT YOUR KONTEXT SECRET ID HERE&#39;&#39;
+          kontext_google_project_number: &#39;PUT YOUR FIREBASE PROJECT NUMBER HERE&#39;
       ]
     }
  }
 </pre></div>
 </td></tr></table>
-<strong>2.5</strong> Add the following in your <code class="codehilite">App Manifest application</code> tag to enable Kontext In-App messaging.</p>
+<strong>2.4</strong> Add the following in your <code class="codehilite">App Manifest application</code> tag to enable Kontext In-App messaging.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -771,13 +764,42 @@
 </pre></div>
 </td></tr></table>
 
+<p><strong>2.5</strong> Add the following in your <code class="codehilite">App Manifest application</code> so that KontextSDK can access Internet.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&lt;!-- Required to allow the app to send events and user profile information --&gt;
+&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+&lt;!-- Recommended so that Kontext knows when to attempt a network call --&gt;
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot;/&gt;
+</pre></div>
+</td></tr></table>
+
 <h3 id="sync-gradle">Sync Gradle<a class="headerlink" href="#sync-gradle" title="Permanent link">&para;</a></h3>
 <p>Make sure to press "Sync Now" on the banner that pops up after saving!</p>
 <h3 id="3-add-required-code">3. Add Required Code<a class="headerlink" href="#3-add-required-code" title="Permanent link">&para;</a></h3>
 <p><strong>3.1</strong> Add the following to the <code class="codehilite">onCreate</code> method in your <code class="codehilite">Application</code> class.</p>
-<ul>
-<li><em>Don't have an Application class? Follow our creation guide!</em></li>
-</ul>
+<p><em>Option 1: If you don't have the application class</em></p>
+<p>Replace <strong>android:name</strong> in your mainfest with following:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="n">application</span>
+        <span class="n">android</span><span class="o">:</span><span class="n">icon</span><span class="o">=</span><span class="s">&quot;@drawable/ic_launcher&quot;</span>
+        <span class="n">android</span><span class="o">:</span><span class="n">theme</span><span class="o">=</span><span class="s">&quot;@style/AppTheme&quot;</span>
+        <span class="n">android</span><span class="o">:</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;Kontext Example&quot;</span>
+        <span class="n">android</span><span class="o">:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;com.kontext.Application&quot;</span>
+        <span class="n">tools</span><span class="o">:</span><span class="n">replace</span><span class="o">=</span><span class="s">&quot;android:label&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">meta</span><span class="o">-</span><span class="n">data</span> 
+<span class="o">&lt;/</span><span class="n">application</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table>
+
+<p><em>Option 2: If you have an  Application class</em></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -790,21 +812,17 @@
 10
 11
 12
-13
-14
-15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">com.kontext.Kontext</span><span class="o">;</span>
+13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">com.kontext.Kontext</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.kontext.ActivityLifecycleCallback</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">YourAppClass</span> <span class="kd">extends</span> <span class="n">Application</span> <span class="o">{</span>
    <span class="nd">@Override</span>
    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
-      <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
 
-      <span class="c1">// Kontext Initialization</span>
-      <span class="n">Kontext</span><span class="o">.</span><span class="na">startInit</span><span class="o">(</span><span class="k">this</span><span class="o">)</span>
-        <span class="o">.</span><span class="na">autoPromptLocation</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
-        <span class="o">.</span><span class="na">inFocusDisplaying</span><span class="o">(</span><span class="n">Kontext</span><span class="o">.</span><span class="na">OSInFocusDisplayOption</span><span class="o">.</span><span class="na">Notification</span><span class="o">)</span>
-        <span class="o">.</span><span class="na">unsubscribeWhenNotificationsAreDisabled</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
-        <span class="o">.</span><span class="na">init</span><span class="o">();</span>
+        <span class="c1">// Kontext Initialization</span>
+       <span class="n">ActivityLifecycleCallback</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+      <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
    <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
@@ -834,22 +852,20 @@
 11
 12
 13
-14
-15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">JSONObject</span> <span class="n">userProfile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSONObject</span><span class="o">();</span>
-      <span class="k">try</span> <span class="o">{</span>
-         <span class="n">userProfile</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Name&quot;</span><span class="o">,</span> <span class="s">&quot;Jhon Doe&quot;</span><span class="o">);</span>
-         <span class="n">userProfile</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Email&quot;</span><span class="o">,</span> <span class="s">&quot;jack@gmail.com&quot;</span><span class="o">);</span>
-         <span class="n">userProfile</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Phone&quot;</span><span class="o">,</span> <span class="s">&quot;+14155551234&quot;</span><span class="o">);</span>
-         <span class="n">userProfile</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Gender&quot;</span><span class="o">,</span> <span class="s">&quot;M&quot;</span><span class="o">);</span>
-         <span class="n">userProfile</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Employed&quot;</span><span class="o">,</span> <span class="s">&quot;Y&quot;</span><span class="o">);</span>
-         <span class="n">userProfile</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Education&quot;</span><span class="o">,</span> <span class="s">&quot;Graduate&quot;</span><span class="o">);</span>
-         <span class="n">userProfile</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Married&quot;</span><span class="o">,</span><span class="s">&quot;Y&quot;</span><span class="o">);</span>
-         <span class="n">userProfile</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Age&quot;</span><span class="o">,</span> <span class="mi">50</span><span class="o">);</span>
-         <span class="n">userProfile</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Tz&quot;</span><span class="o">,</span> <span class="s">&quot;Asia/Kolkata&quot;</span><span class="o">);</span>
-         <span class="n">Kontext</span><span class="o">.</span><span class="na">setUserAttributes</span><span class="o">(</span><span class="n">userProfile</span><span class="o">);</span>
-      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">JSONException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-         <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-      <span class="o">}</span>
+14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">profileUpdate</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+      <span class="n">profileUpdate</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Name&quot;</span><span class="o">,</span> <span class="s">&quot;John Dow&quot;</span><span class="o">);</span>                  <span class="c1">// String</span>
+      <span class="n">profileUpdate</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Email&quot;</span><span class="o">,</span> <span class="s">&quot;john@gmail.com&quot;</span><span class="o">);</span>               <span class="c1">// Email address of the user</span>
+      <span class="n">profileUpdate</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Phone&quot;</span><span class="o">,</span> <span class="s">&quot;+222333444&quot;</span><span class="o">);</span>                 <span class="c1">// Phone (with the country code)</span>
+      <span class="n">profileUpdate</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Gender&quot;</span><span class="o">,</span> <span class="s">&quot;M&quot;</span><span class="o">);</span>                           <span class="c1">// Can be either M or F</span>
+      <span class="n">profileUpdate</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Employed&quot;</span><span class="o">,</span> <span class="s">&quot;Y&quot;</span><span class="o">);</span>                         <span class="c1">// Can be either Y or N</span>
+      <span class="n">profileUpdate</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Education&quot;</span><span class="o">,</span> <span class="s">&quot;Graduate&quot;</span><span class="o">);</span>                 <span class="c1">// Can be either Graduate, College or School</span>
+      <span class="n">profileUpdate</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Married&quot;</span><span class="o">,</span> <span class="s">&quot;Y&quot;</span><span class="o">);</span>                          <span class="c1">// Can be either Y or N</span>
+      <span class="n">profileUpdate</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;DOB&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Date</span><span class="o">());</span>                       <span class="c1">// Date of Birth. Set the Date object to the appropriate value first</span>
+      <span class="n">profileUpdate</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Age&quot;</span><span class="o">,</span> <span class="mi">28</span><span class="o">);</span>                               <span class="c1">// Not required if DOB is set</span>
+      <span class="n">profileUpdate</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Tz&quot;</span><span class="o">,</span> <span class="s">&quot;Asia/Kolkata&quot;</span><span class="o">);</span>                    
+      <span class="n">profileUpdate</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Photo&quot;</span><span class="o">,</span> <span class="s">&quot;www.foobar.com/image.jpeg&quot;</span><span class="o">);</span>    <span class="c1">// URL to the Image</span>
+
+      <span class="n">Kontext</span><span class="o">.</span><span class="na">setUserProfile</span><span class="o">(</span><span class="n">profileUpdate</span><span class="o">);</span>
 </pre></div>
 </td></tr></table>
 
@@ -857,7 +873,7 @@
 <p>RECOMMENDED</p>
 <p>Once you integrate the Kontext SDK, we automatically start tracking events, such as App Launch and Notification Viewed. Kontext SDK offers screen tracking API to track screen activity of a user.</p>
 <p>To send screen activity to Kontext, you will have to call the <a href="../android/reference#sendScreen">sendScreen</a> method with the name of the screen.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Kontext</span><span class="o">.</span><span class="na">sendScreen</span><span class="o">(</span><span class="s">&quot;Screen Name&quot;</span><span class="o">);</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Kontext</span><span class="o">.</span><span class="na">sendScreen</span><span class="o">(</span><span class="s">&quot;Screen Name&quot;</span><span class="o">);</span>  <span class="c1">// String</span>
 </pre></div>
 </td></tr></table>
 
@@ -865,7 +881,11 @@
 <p>RECOMMENDED</p>
 <p>Once you integrate the Kontext SDK, we automatically start tracking events, such as App Launch and Notification Viewed. In addition, you can also track custom events.</p>
 <p>To send screen activity to Kontext, you will have to call the <a href="../android/reference#sendEvent">sendEvent</a> method with the name of the custom event you want to track.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Kontext</span><span class="o">.</span><span class="na">sendEvent</span><span class="o">(</span><span class="s">&quot;Product Added&quot;</span><span class="o">,</span> <span class="s">&quot;Applie iPhone&quot;</span><span class="o">);</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">JSONObject</span> <span class="n">payload</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSONObject</span><span class="o">();</span>
+      <span class="n">payload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;Product Added&quot;</span><span class="o">,</span> <span class="s">&quot;Applie iPhone&quot;</span><span class="o">);</span>
+      <span class="n">Kontext</span><span class="o">.</span><span class="na">sendEvent</span><span class="o">(</span><span class="s">&quot;Product&quot;</span><span class="o">,</span> <span class="n">payload</span><span class="o">);</span>
 </pre></div>
 </td></tr></table>
 
