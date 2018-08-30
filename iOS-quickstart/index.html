@@ -335,8 +335,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-add-app-groups-optional-but-recommended" title="7. Add App Groups (Optional but Recommended)" class="md-nav__link">
-    7. Add App Groups (Optional but Recommended)
+  <a href="#7-add-notification-service-extension" title="7. Add Notification Service Extension" class="md-nav__link">
+    7. Add Notification Service Extension
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-add-app-groups-optional-but-recommended" title="8. Add App Groups (Optional but Recommended)" class="md-nav__link">
+    8. Add App Groups (Optional but Recommended)
   </a>
   
 </li>
@@ -626,8 +633,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-add-app-groups-optional-but-recommended" title="7. Add App Groups (Optional but Recommended)" class="md-nav__link">
-    7. Add App Groups (Optional but Recommended)
+  <a href="#7-add-notification-service-extension" title="7. Add Notification Service Extension" class="md-nav__link">
+    7. Add Notification Service Extension
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-add-app-groups-optional-but-recommended" title="8. Add App Groups (Optional but Recommended)" class="md-nav__link">
+    8. Add App Groups (Optional but Recommended)
   </a>
   
 </li>
@@ -796,7 +810,170 @@
 </pre></div>
 </td></tr></table></div>
 </div>
-<h3 id="7-add-app-groups-optional-but-recommended">7. Add App Groups (Optional but Recommended)<a class="headerlink" href="#7-add-app-groups-optional-but-recommended" title="Permanent link">&para;</a></h3>
+<h3 id="7-add-notification-service-extension">7. Add Notification Service Extension<a class="headerlink" href="#7-add-notification-service-extension" title="Permanent link">&para;</a></h3>
+<p><strong>7.1</strong> In Xcode Select <code class="codehilite">File</code> &gt; <code class="codehilite">New</code> &gt; <code class="codehilite">Target...</code></p>
+<p><strong>7.2</strong> Select <code class="codehilite">Notification Service Extension</code> then press <code class="codehilite">Next</code>.</p>
+<p><img alt="Screenshot" src="../assets/images/ios-14.png" /></p>
+<p><strong>7.3</strong> Enter the product name as <code class="codehilite">KontextNotificationServiceExtension</code> and press <code class="codehilite">Finish</code>.</p>
+<p><img alt="Screenshot" src="../assets/images/ios-15.png" /></p>
+<p><strong>7.4</strong> Press Cancel on the Activate scheme prompt.</p>
+<p><img alt="Screenshot" src="../assets/images/ios-16.jpg" /></p>
+<p>By cancelling, you are keeping Xcode debugging your app, instead of just the extension. If you activate by accident, you can always switch back to debug your app within Xcode (next to the play button).</p>
+<p><strong>7.5</strong> Open the Xcode project settings and select the <code class="codehilite">KontextNotificationServiceExtension</code> target. Unless you have a specific reason not to, you should set the <code class="codehilite">Deployment Target</code> to be iOS 10.</p>
+<p><img alt="Screenshot" src="../assets/images/ios-17.jpg" /></p>
+<p><strong>7.6</strong> Open <code class="codehilite">NotificationService.m</code> or <code class="codehilite">NotificationService.swift</code> and replace the whole file contents with the below code.swift </p>
+<div class="superfences-tabs">
+<input name="__tabs_3" type="radio" id="__tab_3_0" checked="checked" />
+<label for="__tab_3_0">swift</label>
+<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">import</span> <span class="nc">UserNotifications</span>
+
+<span class="kd">import</span> <span class="nc">Kontext</span>
+
+<span class="kd">class</span> <span class="nc">NotificationService</span><span class="p">:</span> <span class="n">UNNotificationServiceExtension</span> <span class="p">{</span>
+
+    <span class="kd">var</span> <span class="nv">contentHandler</span><span class="p">:</span> <span class="p">((</span><span class="n">UNNotificationContent</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">)?</span>
+    <span class="kd">var</span> <span class="nv">receivedRequest</span><span class="p">:</span> <span class="n">UNNotificationRequest</span><span class="p">!</span>
+    <span class="kd">var</span> <span class="nv">bestAttemptContent</span><span class="p">:</span> <span class="n">UNMutableNotificationContent</span><span class="p">?</span>
+
+    <span class="kr">override</span> <span class="kd">func</span> <span class="nf">didReceive</span><span class="p">(</span><span class="kc">_</span> <span class="n">request</span><span class="p">:</span> <span class="n">UNNotificationRequest</span><span class="p">,</span> <span class="n">withContentHandler</span> <span class="n">contentHandler</span><span class="p">:</span> <span class="p">@</span><span class="n">escaping</span> <span class="p">(</span><span class="n">UNNotificationContent</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">receivedRequest</span> <span class="p">=</span> <span class="n">request</span><span class="p">;</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">contentHandler</span> <span class="p">=</span> <span class="n">contentHandler</span>
+        <span class="n">bestAttemptContent</span> <span class="p">=</span> <span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="n">content</span><span class="p">.</span><span class="n">mutableCopy</span><span class="p">()</span> <span class="k">as</span><span class="p">?</span> <span class="n">UNMutableNotificationContent</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="kd">let</span> <span class="nv">bestAttemptContent</span> <span class="p">=</span> <span class="n">bestAttemptContent</span> <span class="p">{</span>
+            <span class="n">Kontext</span><span class="p">.</span><span class="n">didReceiveNotificationExtensionRequest</span><span class="p">(</span><span class="kc">self</span><span class="p">.</span><span class="n">receivedRequest</span><span class="p">,</span> <span class="n">with</span><span class="p">:</span> <span class="kc">self</span><span class="p">.</span><span class="n">bestAttemptContent</span><span class="p">)</span>
+            <span class="n">contentHandler</span><span class="p">(</span><span class="n">bestAttemptContent</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kr">override</span> <span class="kd">func</span> <span class="nf">serviceExtensionTimeWillExpire</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Called just before the extension will be terminated by the system.</span>
+        <span class="c1">// Use this as an opportunity to deliver your &quot;best attempt&quot; at modified content, otherwise the original push payload will be used.</span>
+        <span class="k">if</span> <span class="kd">let</span> <span class="nv">contentHandler</span> <span class="p">=</span> <span class="n">contentHandler</span><span class="p">,</span> <span class="kd">let</span> <span class="nv">bestAttemptContent</span> <span class="p">=</span>  <span class="n">bestAttemptContent</span> <span class="p">{</span>
+            <span class="n">Kontext</span><span class="p">.</span><span class="n">serviceExtensionTimeWillExpireRequest</span><span class="p">(</span><span class="kc">self</span><span class="p">.</span><span class="n">receivedRequest</span><span class="p">,</span> <span class="n">with</span><span class="p">:</span> <span class="kc">self</span><span class="p">.</span><span class="n">bestAttemptContent</span><span class="p">)</span>
+            <span class="n">contentHandler</span><span class="p">(</span><span class="n">bestAttemptContent</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+<input name="__tabs_3" type="radio" id="__tab_3_1" />
+<label for="__tab_3_1">objective-c</label>
+<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="cp">#import &lt;Kontext/Kontext.h&gt;</span>
+
+<span class="cp">#import &quot;NotificationService.h&quot;</span>
+
+<span class="k">@interface</span> <span class="nc">NotificationService</span> <span class="p">()</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">strong</span><span class="p">)</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">contentHandler</span><span class="p">)(</span><span class="n">UNNotificationContent</span> <span class="o">*</span><span class="n">contentToDeliver</span><span class="p">);</span>
+<span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">strong</span><span class="p">)</span> <span class="n">UNNotificationRequest</span> <span class="o">*</span><span class="n">receivedRequest</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">strong</span><span class="p">)</span> <span class="n">UNMutableNotificationContent</span> <span class="o">*</span><span class="n">bestAttemptContent</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">NotificationService</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">didReceiveNotificationRequest:</span><span class="p">(</span><span class="n">UNNotificationRequest</span> <span class="o">*</span><span class="p">)</span><span class="nv">request</span> <span class="nf">withContentHandler:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">UNNotificationContent</span> <span class="o">*</span> <span class="n">_Nonnull</span><span class="p">))</span><span class="nv">contentHandler</span> <span class="p">{</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">receivedRequest</span> <span class="o">=</span> <span class="n">request</span><span class="p">;</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">contentHandler</span> <span class="o">=</span> <span class="n">contentHandler</span><span class="p">;</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">bestAttemptContent</span> <span class="o">=</span> <span class="p">[</span><span class="n">request</span><span class="p">.</span><span class="n">content</span> <span class="n">mutableCopy</span><span class="p">];</span>
+
+    <span class="p">[</span><span class="n">Kontext</span> <span class="nl">didReceiveNotificationExtensionRequest</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">receivedRequest</span> <span class="nl">withMutableNotificationContent</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">bestAttemptContent</span><span class="p">];</span>
+
+    <span class="c1">// DEBUGGING: Uncomment the 2 lines below and comment out the one above to ensure this extension is excuting</span>
+    <span class="c1">//            Note, this extension only runs when mutable-content is set</span>
+    <span class="c1">//            Setting an attachment or action buttons automatically adds this</span>
+    <span class="c1">// NSLog(@&quot;Running NotificationServiceExtension&quot;);</span>
+    <span class="c1">// self.bestAttemptContent.body = [@&quot;[Modified] &quot; stringByAppendingString:self.bestAttemptContent.body];</span>
+
+    <span class="nb">self</span><span class="p">.</span><span class="n">contentHandler</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">bestAttemptContent</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">serviceExtensionTimeWillExpire</span> <span class="p">{</span>
+    <span class="c1">// Called just before the extension will be terminated by the system.</span>
+    <span class="c1">// Use this as an opportunity to deliver your &quot;best attempt&quot; at modified content, otherwise the original push payload will be used.</span>
+
+    <span class="p">[</span><span class="n">Kontext</span> <span class="nl">serviceExtensionTimeWillExpireRequest</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">receivedRequest</span> <span class="nl">withMutableNotificationContent</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">bestAttemptContent</span><span class="p">];</span>
+
+    <span class="nb">self</span><span class="p">.</span><span class="n">contentHandler</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">bestAttemptContent</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p><em>Ignore any build errors at this point, step 2 will import Kontext which will resolve any errors.</em></p>
+<h3 id="8-add-app-groups-optional-but-recommended">8. Add App Groups (Optional but Recommended)<a class="headerlink" href="#8-add-app-groups-optional-but-recommended" title="Permanent link">&para;</a></h3>
 <p>In order for your application to be able to let push notifications increment/decrement the badge count, you need to set up an <strong>App Group</strong> for your application.</p>
 <h3 id="callbacks">Callbacks<a class="headerlink" href="#callbacks" title="Permanent link">&para;</a></h3>
 <p><a href="../iOS/reference/#kontexthandlenotificationreceivedblock">KontextHandleNotificationReceivedBlock</a> - Called when a notification is received while your app is in focus only.
