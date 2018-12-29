@@ -12,16 +12,6 @@ Kontext ANDROID Native API Reference
 
 | Calls                                                        | Type              | Description                                                  |
 | ------------------------------------------------------------ | ----------------- | ------------------------------------------------------------ |
-| Initialization                                               |                   |                                                              |
-| [init](#init)                                                | Builder Method    | Initialize Kontext                                           |
-| [startInit](#startinit)                                      | Builder Method    |                                                              |
-| [setNotificationReceivedHandler](#setnotificationreceivedhandler) | Builder Method    |                                                              |
-| [setNotificationOpenedHandler](#setnotificationopenedhandler) | Builder Method    |                                                              |
-| [autoPromptLocation](#autopromptlocation)                    | Builder Method    | Automatically Prompt Users for Location                      |
-| [disableGmsMissingPrompt](#disablegmsmissingprompt)          | Builder Method    | Automatically Prompt User to update Google Play if out of date |
-| [unsubscribeWhenNotificationsAreDisabled](#unsubscribewhennotificationsaredisabled) | Builder Method    | If notifications are disabled for your app unsubscribe them from Kontext. |
-| [filterOtherGCMReceivers](#filterothergcmreceivers)          | Builder Method    | Enable to prevent other broadcast receivers from receiving Kontext FCM / GCM payloads. |
-| [setInFocusDisplaying](#setinfocusdisplaying)                | Method            | Change how the notification is displayed when your app is actively being used. |
 | Privacy                                                      |                   |                                                              |
 | [setRequiresUserPrivacyConsent](#setrequiresuserprivacyconsent) | Method            | Delays initialization of the SDK until the user provides privacy consent |
 | [provideUserConsent](#provideuserconsent)                    | Method            | Tells the SDK that the user has provided privacy consent (if required) |
@@ -34,20 +24,15 @@ Kontext ANDROID Native API Reference
 | [sendEvent](#sendevent)                                      | Method            | Send a single user event to Kontext                          |
 | [sendEvents](#sendevents)                                    | Method            | Batch and send multiple events to Kontext                    |
 | [sendScreen](#sendscreen)                                    | Method            | Send screen view activity to Kontext                         |
-| [sendUserAttributes](#senduserattributes)                    | Method            | Send user properties to Kontext                              |
+| [setUserProfile](#setUserProfile)                            | Method            | Send user properties to Kontext                              |
 | Data                                                         |                   |                                                              |
 | [promptLocation](#promptlocation)                            | Method            | Prompt Users for Location                                    |
-| [setLocationShared](#setlocationshared)                      | Method            | Disable or enable location collection (Defaults to enabled) if your app has location permission |
 | Receiving Notifications                                      |                   |                                                              |
 | [postNotification](#postnotification)                        | Method            | Send or schedule a notification to a user                    |
 | [cancelNotification](#cancelnotification)                    | Method            | Delete a single app notification                             |
 | [clearKontextNotifications](#clearkontextnotifications)      | Method            | Delete all app notifications                                 |
 | [setSubscription](#setsubscription)                          | Method            | Opt users in or out of receiving notifications               |
 | [NotificationExtenderService](#notificationextenderservice)  | Method + Manifest | Add custom data to a notification, or override notification options |
-| Email                                                        |                   |                                                              |
-| [setEmail](#setemail)                                        | Method            | Set user's email                                             |
-| [logoutEmail](#logoutemail)                                  | Method            | Log user out to dissociate email from device                 |
-| [addEmailSubscriptionObserver](#addemailsubscriptionobserver) | Method            | Observer for subscription changes to email                   |
 | Notification Events                                          |                   |                                                              |
 | [NotificationReceivedHandler](#notificationreceivedhandler)  | Handler           | When a notification is received by a device                  |
 | [NotificationOpenedHandler](#notificationopenedhandler)      | Handler           | When a user takes an action on a notification                |
@@ -61,119 +46,8 @@ Kontext ANDROID Native API Reference
 | [setInFocusDisplaying](#setinfocusdisplaying)                | Method            | Change how the notification is displayed when your app is actively being used. |
 | [enableVibrate](#enablevibrate)                              | Method            | When user receives notification, vibrate device less         |
 | [enableSound](#enablesound)                                  | Method            | When user receives notification, do not play a sound         |
-| [Disable Badges](#disable-badges)                            | Android Manifest  | Disable badge counts in your app                             |
 | Debug                                                        |                   |                                                              |
-| [setLogLevel](#setloglevel)                                  | Method            | Enable logging to help debug Kontext implementation          |
-
-
-
-## Initialization
-
-### `init`
-
-BUILDER METHOD
-
-Initializes Kontext to register the device for push notifications. Should be called in the `onCreate` method of your Application class.
-
-```Java
-Kontext.startInit(this).init();
-```
-
-
-
-### `startInit`
-
-METHOD
-
-Initializes Kontext to register the device for push notifications. Should be call in the `onCreate` of your Application class.
-
-| Parameter | Type    | Description               |
-| --------- | ------- | ------------------------- |
-| `context` | Context | Your Application Kontext. |
-
-*Returns*
-
-`Kontext.Builder` - See below for a list of methods available.
-
-```Java
-public class YourAppClass extends Application {
-   @Override
-   public void onCreate() {
-      super.onCreate();
-      Kontext.startInit(this).init();
-   }
-}
-```
-
-
-
-### `autoPromptLocation`
-
-BUILDER METHOD
-
-Prompts the user for location permissions. This allows for geotagging so you can send notifications to users based on location. See [promptLocation](#promptlocation) for more details.
-
-| Parameter | Type    | Description                                                  |
-| --------- | ------- | ------------------------------------------------------------ |
-| `prompt`  | boolean | `false`  (DEFAULT) - do not prompt<br />`true`  -  prompt users for location permissions when your app starts. |
-
-```Java
-Kontext.startInit(this)
-  .autoPromptLocation(true)
-  .init();
-```
-
-
-
-### `setNotificationReceivedHandler`
-
-BUILDER METHOD
-
-Sets a notification received handler that will fire when a notification is received. It will be fired when your app is in focus or in the background.
-
-| Parameter | Type                                                        | Description                                         |
-| --------- | ----------------------------------------------------------- | --------------------------------------------------- |
-| `handler` | [NotificationReceivedHandler](#notificationreceivedhandler) | Instance to a class implementing this interference. |
-
-```Java
-Kontext.startInit(this)   
-   .setNotificationReceivedHandler(new ExampleNotificationReceivedHandler())
-   .init();
-```
-
-
-
-### `setNotificationOpenedHandler`
-
-BUILDER METHOD
-
-Sets a notification opened handler. The instance will be called when a notification is tapped on from the notification shade or when closing an Alert notification shown in the app.
-
-| Parameter | Type                                                    | Description                                         |
-| --------- | ------------------------------------------------------- | --------------------------------------------------- |
-| `hndler`  | [NotificationOpenedHandler](#notificationopenedhandler) | Instance to a class implementing this interference. |
-
-```Java
-Kontext.startInit(this)   
-   .setNotificationOpenedHandler(new ExampleNotificationOpenedHandler())
-   .init();
-```
-
-
-
-### `setInFocusDisplaying`
-
-METHOD
-
-Setting to control how Kontext notifications will be shown when one is received while your app is in focus.
-
-`Notification` - native notification display while user has app in focus (can be distracting).
-`InAppAlert` (DEFAULT) - native alert dialog display, which can be helpful during development.
-`None` - notification is silent.
-
-```Java
-Kontext.setInFocusDisplaying(Kontext.OSInFocusDisplayOption.Notification);
-```
+| [setDebugLevel](#setDebugLevel)                              | Method            | Enable logging to help debug Kontext implementation          |
 
 
 
@@ -459,7 +333,9 @@ Tag a user based on an app event of your choosing so later you can create segmen
 | `value`   | String | Value to set on the key.                  |
 
 ```java
-Kontext.sendEvents("key", "value");
+JSONObject payload = new JSONObject();
+      payload.put("Product Added", "Applie iPhone");
+      Kontext.sendEvent("Product", payload);
 ```
 
 
@@ -494,28 +370,36 @@ Tag a user based on an screen view event of your choosing so later you can creat
 | `keyValues` | JSONObject | Key value pairs of your choosing to create or update. |
 
 ```Java
-Kontext.sendEvents("screen Name");
+Kontext.sendScreen("screen Name");		// String
 ```
 
 
 
-### `sendUserAttribute`
+### `setUserProfile`
 
 METHOD
 
 Tag a user based on their properties like name, age, gender, location, etc.
 
-| Parameter   | Type       | Description                                           |
-| ----------- | ---------- | ----------------------------------------------------- |
-| `keyValues` | JSONObject | Key value pairs of your choosing to create or update. |
+| Parameter   | Type    | Description                                           |
+| ----------- | ------- | ----------------------------------------------------- |
+| `keyValues` | HashMap | Key value pairs of your choosing to create or update. |
 
 ```Java
-JSONObject events = new JSONObject();
-	events.put("name", "Jhon Doe");
-	eventss.put("age", 24);
-	eventss.put("gender", "M");
-	eventss.put("city", "Pune");
-	Kontext.sendUserAttributes(events);
+HashMap<String, Object> profileUpdate = new HashMap<String, Object>();
+      profileUpdate.put("Name", "John Dow");                  // String
+      profileUpdate.put("Email", "john@gmail.com");               // Email address of the user
+      profileUpdate.put("Phone", "+222333444");                 // Phone (with the country code)
+      profileUpdate.put("Gender", "M");                           // Can be either M or F
+      profileUpdate.put("Employed", "Y");                         // Can be either Y or N
+      profileUpdate.put("Education", "Graduate");                 // Can be either Graduate, College or School
+      profileUpdate.put("Married", "Y");                          // Can be either Y or N
+      profileUpdate.put("DOB", new Date());                       // Date of Birth. Set the Date object to the appropriate value first
+      profileUpdate.put("Age", 28);                               // Not required if DOB is set
+      profileUpdate.put("Tz", "Asia/Kolkata");                    
+      profileUpdate.put("Photo", "www.foobar.com/image.jpeg");    // URL to the Image
+
+      Kontext.setUserProfile(profileUpdate);
 ```
 
 
@@ -538,18 +422,6 @@ Make sure you have one of the following permissions in your `AndroidManifest.xml
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 ```
-
-
-
-### `setLocationShared`
-
-METHOD
-
-```Java
-Kontext.setLocationShared(false);
-```
-
-Disable or enable location collection (defaults to enabled if your app has location permission).
 
 
 
@@ -682,52 +554,6 @@ public class NotificationExtenderExample extends NotificationExtenderService {
 
 **Additional Notes**
 `NotificationExtenderService` is an Android `IntentService` so please do all your work synchronously. A wake lock is obtained so the device will not sleep while you're processing the payload. 
-
-
-
-## Email
-
-### `setEmail`
-
-METHOD
-
-`setEmail` allows you to set the user's email address with the Kontext SDK. We offer several overloaded versions of this method.
-
-```Java
-Kontext.setEmail("example@domain.com");
-```
-
-### `logoutEmail`
-
-METHOD
-
-If your app implements logout functionality, you can call `logoutEmail` to dissociate the email from the device:
-
-```Java
-Kontext.logoutEmail();
-```
-
-
-
-### `addEmailSubscriptionObserver`
-
-METHOD
-
-We have also added a new email subscription observer to track changes to email subscriptions (ie. the user sets their email or logs out). In order to subscribe to email subscription changes you can implement the following:
-
-```Java
-Kontext.addEmailSubscriptionObserver(subscriptionObserver);
-```
-
-Now, whenever the email subscription changes, this method will be called:
-
-```Java
-OSEmailSubscriptionObserver subscriptionObserver = new OSEmailSubscriptionObserver() {
-   @Override
-   public void onOSEmailSubscriptionChanged(OSEmailSubscriptionStateChanges stateChanges) {
-   }
-};
-```
 
 
 
@@ -965,51 +791,22 @@ By default Kontext plays the system's default notification sound when the device
 Kontext.enableSound(false);
 ```
 
-
-
-### Disable Badges
-
-ANDROID MANIFEST
-
-The Kontext SDK automatically sets the badge count on your app to the number of notifications that are currently in the notification shade. If you want to disable this you can add the following to your `AndroidManifest.xml`.
-
-```XML
-<application ...>
-   <meta-data android:name="com.onesignal.BadgeCount" android:value="DISABLE" />
-</application>
-```
-
-You can remove the badge permissions with the following entries.
-
-```XML
-<uses-permission android:name="com.sec.android.provider.badge.permission.READ" tools:node="remove" />
-<uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" tools:node="remove" />
-<uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" tools:node="remove" />
-<uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" tools:node="remove" />
-<uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" tools:node="remove" />
-<uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" tools:node="remove" />
-<uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" tools:node="remove" />
-<uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" tools:node="remove" />
-<uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" tools:node="remove"/>
-<uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" tools:node="remove" />
-<uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" tools:node="remove" />
-```
-
-
-
 ## Debug
 
-### `setLogLevel`
+### `setDebugLevel`
 
 METHOD
 
-Enable logging to help debug if you run into an issue setting up Kontext. The following options are available with increasingly more information; `NONE`, `FATAL`, `ERROR`, `WARN`, `INFO`, `DEBUG`, `VERBOSE`
+Enable logging to help debug if you run into an issue setting up Kontext. The following options are available with increasingly more information; `NONE`, `INFO`, `DEBUG`, `VERBOSE`
 
-| Parameter      | Type      | Description                                                |
-| -------------- | --------- | ---------------------------------------------------------- |
-| `logLevel`     | LOG_LEVEL | Sets the logging level to print to the Android LogCat log. |
-| ` visualLevel` | LOG_LEVEL | Sets the logging level to show as alert dialogs.           |
+| Parameter  | Type      | Description                                                |
+| ---------- | --------- | ---------------------------------------------------------- |
+| `logLevel` | LOG_LEVEL | Sets the logging level to print to the Android LogCat log. |
 
 ```java
-Kontext.setLogLevel(Kontext.LOG_LEVEL.DEBUG, Kontext.LOG_LEVEL.DEBUG);
+KontextAPI.setDebugLevel(KontextAPI.LogLevel.INFO);    //Default Log level
+
+KontextAPI.setDebugLevel(KontextAPI.LogLevel.DEBUG);   //Set Log level to DEBUG log warnings or other important messages
+
+KontextAPI.setDebugLevel(KontextAPI.LogLevel.OFF);     //Switch off logs for Production environment
 ```
